@@ -3,6 +3,7 @@
   community.kubernetes.helm_repository:
     name: democratic-csi
     repo_url: "https://democratic-csi.github.io/charts/"
+  when: not democratic_csi_check_config_only
 
 - name: "Ensure configuration directory is present"
   ansible.builtin.file:
@@ -31,4 +32,10 @@
       - "/tmp/k8s-config/democratic-csi/values-{{ item }}.yml"
     kubeconfig: "{{ kubeconfig }}"
   loop: "{{ democratic_csi_protocol }}"
-# to list version: helm search repo democratic-csi/democratic-csi --versions
+  when: not democratic_csi_check_config_only
+
+- name: "Remove configuration temporary directory"
+  ansible.builtin.file:
+    path: "/tmp/k8s-config/democratic-csi"
+    state: absent
+  when: not democratic_csi_keep_tmpfiles

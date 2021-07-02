@@ -1,6 +1,12 @@
 ---
+#role related default values
+democratic_csi_keep_tmpfiles: false
+democratic_csi_check_config_only: false
+
+
 #democratic-csi helm chart related default values
 democratic_csi_release_namespace: democratic-csi
+# to list version: helm search repo democratic-csi/democratic-csi --versions
 democratic_csi_chart_version: "0.8.2"
 
 democratic_csi_protocol:
