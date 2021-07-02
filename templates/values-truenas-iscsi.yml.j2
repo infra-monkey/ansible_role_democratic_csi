@@ -6,8 +6,8 @@ csiDriver:
 storageClasses:
 - name: truenas-iscsi-csi
   defaultClass: {{ democratic_csi_iscsi_sc_defaultClass }}
-  reclaimPolicy: {{ democratic_csi_iscsi_sc_reclaimPolicy }}
-  volumeBindingMode: {{ democratic_csi_iscsi_sc_volumeBindingMode }}
+  reclaimPolicy: "{{ democratic_csi_iscsi_sc_reclaimPolicy }}"
+  volumeBindingMode: "{{ democratic_csi_iscsi_sc_volumeBindingMode }}"
   allowVolumeExpansion: {{ democratic_csi_iscsi_sc_allowVolumeExpansion }}
   parameters:
     # for block-based storage can be ext3, ext4, xfs
@@ -105,8 +105,8 @@ driver:
       extentXenCompat: {{ democratic_csi_iscsi_extentXenCompat }}
       extentDisablePhysicalBlocksize: true
       # 512, 1024, 2048, or 4096,
-      extentBlocksize: {{ democratic_csi_iscsi_extentDisablePhysicalBlocksize }}
+      extentBlocksize: "{{ democratic_csi_iscsi_extentDisablePhysicalBlocksize }}"
       # "" (let FreeNAS decide, currently defaults to SSD), Unknown, SSD, 5400, 7200, 10000, 15000
       extentRpm: "{{ democratic_csi_iscsi_extentRpm }}"
       # 0-100 (0 == ignore)
-      extentAvailThreshold: {{ democratic_csi_iscsi_extentAvailThreshold }}
+      extentAvailThreshold: "{{ democratic_csi_iscsi_extentAvailThreshold }}"
