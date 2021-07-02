@@ -1,6 +1,7 @@
 ---
 - name: "Debug"
-  var: vars
+  ansible.builtin.debug:
+    var: vars
 
 - name: Add democratic-csi chart repo
   community.kubernetes.helm_repository:
