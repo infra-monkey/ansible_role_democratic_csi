@@ -1,8 +1,5 @@
 csiDriver:
-  # should be globally unique for a given cluster
   name: "org.democratic-csi.iscsi"
-
-# add note here about volume expansion requirements
 storageClasses:
 - name: truenas-iscsi-csi
   defaultClass: {{ democratic_csi_iscsi_sc_defaultClass }}
@@ -10,18 +7,9 @@ storageClasses:
   volumeBindingMode: "{{ democratic_csi_iscsi_sc_volumeBindingMode }}"
   allowVolumeExpansion: {{ democratic_csi_iscsi_sc_allowVolumeExpansion }}
   parameters:
-    # for block-based storage can be ext3, ext4, xfs
-    # for nfs should be nfs
     fsType: "{{ democratic_csi_iscsi_sc_fsType }}"
-      
-    # if true, volumes created from other snapshots will be
-    # zfs send/received instead of zfs cloned
     detachedVolumesFromSnapshots: "{{ democratic_csi_iscsi_sc_detachedVolumesFromSnapshots }}"
-    
-    # if true, volumes created from other volumes will be
-    # zfs send/received instead of zfs cloned
     detachedVolumesFromVolumes: "{{ democratic_csi_iscsi_sc_detachedVolumesFromVolumes }}"
-
   mountOptions: {{ democratic_csi_iscsi_sc_mountOptions }}
   secrets:
     provisioner-secret:
@@ -29,16 +17,7 @@ storageClasses:
     node-stage-secret:
     node-publish-secret:
     controller-expand-secret:
-
-# if your cluster supports snapshots you may enable below
 volumeSnapshotClasses: {{ democratic_csi_iscsi_volumeSnapshotClasses }}
-#- name: freenas-iscsi-csi
-#  parameters:
-#  # if true, snapshots will be created with zfs send/receive
-#  # detachedSnapshots: "false"
-#  secrets:
-#    snapshotter-secret:
-
 driver:
   config:
     driver: freenas-iscsi
@@ -62,7 +41,6 @@ driver:
         {{ democratic_csi_ssh_privatekey | indent(width=8) }}
 {% endif %}
     zfs:
-      # the example below is useful for TrueNAS 12
       cli:
         sudoEnabled: {{ democratic_csi_zfs_sudoEnabled }}
         paths:
@@ -70,43 +48,26 @@ driver:
           zpool: /usr/local/sbin/zpool
           sudo: /usr/local/bin/sudo
           chroot: /usr/sbin/chroot
-      # total volume name (zvol/<datasetParentName>/<pvc name>) length cannot exceed 63 chars
-      # https://www.ixsystems.com/documentation/freenas/11.2-U5/storage.html#zfs-zvol-config-opts-tab
-      # standard volume naming overhead is 46 chars
-      # datasetParentName should therefore be 17 chars or less
       datasetParentName: "{{ democratic_csi_iscsi_zfs_datasetParentName }}"
       detachedSnapshotsDatasetParentName: "{{ democratic_csi_iscsi_zfs_detachedSnapshotsDatasetParentName }}"
-      # "" (inherit), lz4, gzip-9, etc
       zvolCompression: "{{ democratic_csi_iscsi_zvolCompression }}"
-      # "" (inherit), on, off, verify
       zvolDedup: "{{ democratic_csi_iscsi_zvolDedup }}"
       zvolEnableReservation: "{{ democratic_csi_iscsi_zvolEnableReservation }}"
-      # 512, 1K, 2K, 4K, 8K, 16K, 64K, 128K default is 16K
       zvolBlocksize: "{{ democratic_csi_iscsi_zvolBlockSize }}"
     iscsi:
       targetPortal: "{{ democratic_csi_iscsi_portal }}"
       targetPortals: {{ democratic_csi_iscsi_portals }}
-      # leave empty to omit usage of -I with iscsiadm
       interface: {{ democratic_csi_iscsi_interface | default(omit) }}
       namePrefix: "{{ democratic_csi_iscsi_portal_namePrefix }}"
       nameSuffix: "{{ democratic_csi_iscsi_portal_nameSuffix }}"
-      # add as many as needed
       targetGroups:
-        # get the correct ID from the "portal" section in the UI
         - targetGroupPortalGroup: "{{ democratic_csi_iscsi_portal_PortalGroup }}"
-          # get the correct ID from the "initiators" section in the UI
           targetGroupInitiatorGroup: "{{ democratic_csi_iscsi_portal_PortalGroup }}"
-          # None, CHAP, or CHAP Mutual
           targetGroupAuthType: "{{ democratic_csi_iscsi_portal_GroupAuthType }}"
-          # get the correct ID from the "Authorized Access" section of the UI
-          # only required if using Chap
           targetGroupAuthGroup: {{ democratic_csi_iscsi_portal_GroupAuthGroup | default(omit) }}
       extentInsecureTpc: {{ democratic_csi_iscsi_extentInsecureTpc }}
       extentXenCompat: {{ democratic_csi_iscsi_extentXenCompat }}
       extentDisablePhysicalBlocksize: true
-      # 512, 1024, 2048, or 4096,
       extentBlocksize: "{{ democratic_csi_iscsi_extentDisablePhysicalBlocksize }}"
-      # "" (let FreeNAS decide, currently defaults to SSD), Unknown, SSD, 5400, 7200, 10000, 15000
       extentRpm: "{{ democratic_csi_iscsi_extentRpm }}"
-      # 0-100 (0 == ignore)
       extentAvailThreshold: "{{ democratic_csi_iscsi_extentAvailThreshold }}"
