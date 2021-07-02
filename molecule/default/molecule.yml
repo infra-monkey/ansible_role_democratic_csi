@@ -13,6 +13,8 @@ platforms:
     pre_build_image: true
 provisioner:
   name: ansible
+  options:
+    vvv: true
   playbooks:
     converge: ${MOLECULE_PLAYBOOK:-converge.yml}
 verifier:

@@ -4,16 +4,14 @@ csiDriver:
 
 storageClasses:
 - name: truenas-nfs-csi
-  defaultClass: true
-  reclaimPolicy: Delete
-  volumeBindingMode: Immediate
-  allowVolumeExpansion: true
+  defaultClass: {{ democratic_csi_nfs_sc_defaultClass }}
+  reclaimPolicy: "{{ democratic_csi_nfs_sc_reclaimPolicy }}"
+  volumeBindingMode: "{{ democratic_csi_nfs_sc_volumeBindingMode }}"
+  allowVolumeExpansion: {{ democratic_csi_nfs_sc_allowVolumeExpansion }}
   parameters:
     fsType: nfs
 
-  mountOptions:
-  - noatime
-  - nfsvers=4
+  mountOptions: {{ democratic_csi_nfs_sc_mountOptions }}
   secrets:
     provisioner-secret:
     controller-publish-secret:
@@ -22,7 +20,7 @@ storageClasses:
     controller-expand-secret:
 
 # if your cluster supports snapshots you may enable below
-volumeSnapshotClasses: []
+volumeSnapshotClasses: {{ democratic_csi_nfs_volumeSnapshotClasses }}
 #- name: freenas-iscsi-csi
 #  parameters:
 #  # if true, snapshots will be created with zfs send/receive
@@ -66,17 +64,17 @@ driver:
       # datasetParentName should therefore be 17 chars or less
       datasetParentName: "{{ democratic_csi_nfs_zfs_datasetParentName }}"
       detachedSnapshotsDatasetParentName: "{{ democratic_csi_nfs_zfs_detachedSnapshotsDatasetParentName }}"
-      datasetEnableQuotas: true
-      datasetEnableReservation: false
-      datasetPermissionsMode: "0777"
-      datasetPermissionsUser: root
-      datasetPermissionsGroup: wheel
+      datasetEnableQuotas: {{ democratic_csi_nfs_zfs_datasetEnableQuotas }}
+      datasetEnableReservation: {{ democratic_csi_nfs_zfs_datasetEnableReservation }}
+      datasetPermissionsMode: "{{ democratic_csi_nfs_zfs_datasetPermissionsMode }}"
+      datasetPermissionsUser: "{{ democratic_csi_nfs_zfs_datasetPermissionsUser }}"
+      datasetPermissionsGroup: "{{ democratic_csi_nfs_zfs_datasetPermissionsGroup }}"
     nfs:
       shareHost: "{{ democratic_csi_nfs_host }}"
-      shareAlldirs: false
-      shareAllowedHosts: []
-      shareAllowedNetworks: []
-      shareMaprootUser: root
-      shareMaprootGroup: wheel
-      shareMapallUser: ""
-      shareMapallGroup: ""
+      shareAlldirs: {{ democratic_csi_nfs_shareAlldirs}}
+      shareAllowedHosts: {{ democratic_csi_nfs_shareAllowedHosts }}
+      shareAllowedNetworks: {{ democratic_csi_nfs_shareAllowedNetworks }}
+      shareMaprootUser: "{{ democratic_csi_nfs_shareMaprootUser }}"
+      shareMaprootGroup: "{{ democratic_csi_nfs_shareMaprootGroup }}"
+      shareMapallUser: "{{ democratic_csi_nfs_shareMapallUser }}"
+      shareMapallGroup: "{{ democratic_csi_nfs_shareMapallGroup }}"
