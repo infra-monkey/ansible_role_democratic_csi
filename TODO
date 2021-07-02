@@ -1,0 +1,9 @@
+support all available driver configuration parameters with appropriate defaults.
+allow deploying multiple resources of the same driver
+add support for freenas-smb
+add support for zfs-generic-nfs
+add support for zfs-generic-iscsi
+add support for nfs-client
+add support for node-manual-nfs
+add support for node-manual-iscsi
+add support for node-manual-smb
