@@ -1,0 +1,25 @@
+---
+democratic_csi_release_namespace: democratic-csi
+democratic_csi_chart_version: "0.8.2"
+democratic_csi_protocol:
+  - truenas-iscsi
+  - truenas-nfs
+democratic_csi_api_protocol: https
+democratic_csi_api_host: "127.0.0.1"
+democratic_csi_api_port: "443"
+democratic_csi_api_key: "random-api-key"
+democratic_csi_api_allowInsecure: false
+democratic_csi_ssh_host: "127.0.0.1"
+democratic_csi_ssh_port: "22"
+democratic_csi_ssh_username: csi
+democratic_csi_zfs_sudoEnabled: true
+democratic_csi_iscsi_zfs_datasetParentName: 
+democratic_csi_iscsi_zfs_detachedSnapshotsDatasetParentName: 
+democratic_csi_iscsi_portal: "127.0.0.1:3260"
+democratic_csi_iscsi_portal_namePrefix: "csi-"
+democratic_csi_iscsi_portal_nameSuffix: "-prd"
+democratic_csi_iscsi_portal_PortalGroup: "1"
+democratic_csi_iscsi_portal_InitiatorGroup: "1"
+democratic_csi_nfs_zfs_datasetParentName: 
+democratic_csi_nfs_zfs_detachedSnapshotsDatasetParentName: 
+democratic_csi_nfs_host: "127.0.0.1"
