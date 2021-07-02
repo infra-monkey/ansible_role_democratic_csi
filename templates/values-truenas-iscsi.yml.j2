@@ -64,7 +64,7 @@ driver:
         - targetGroupPortalGroup: "{{ democratic_csi_iscsi_portal_PortalGroup }}"
           targetGroupInitiatorGroup: "{{ democratic_csi_iscsi_portal_PortalGroup }}"
           targetGroupAuthType: "{{ democratic_csi_iscsi_portal_GroupAuthType }}"
-          targetGroupAuthGroup: {{ democratic_csi_iscsi_portal_GroupAuthGroup | default(omit) }}
+          targetGroupAuthGroup: {{ democratic_csi_iscsi_portal_GroupAuthGroup }}
       extentInsecureTpc: {{ democratic_csi_iscsi_extentInsecureTpc }}
       extentXenCompat: {{ democratic_csi_iscsi_extentXenCompat }}
       extentDisablePhysicalBlocksize: true
