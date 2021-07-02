@@ -4,8 +4,6 @@ The role currently supports deployment of only one configuration for :
 - freenas-iscsi
 - freenas-nfs
 
-Node-manual will not be covered in this role.
-
 # Requirements
 The remote user must have the following python libraries installed:
 - openshift
