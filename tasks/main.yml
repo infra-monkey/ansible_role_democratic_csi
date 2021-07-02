@@ -16,7 +16,6 @@
     src: "values-{{ item }}.yml.j2"
     dest: "/tmp/k8s-config/democratic-csi/values-{{ item }}.yml"
     mode: '0600'
-  diff: true
   loop: "{{ democratic_csi_protocol }}"
 
 - name: Deploy democratic-csi chart using values files on target

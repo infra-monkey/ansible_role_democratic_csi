@@ -36,10 +36,4 @@ jobs:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
           MOLECULE_DISTRO: ${{ matrix.distro }}
-        run: molecule -vvv test
-      - name: Display config files
-        env:
-          PY_COLORS: '1'
-          ANSIBLE_FORCE_COLOR: '1'
-          MOLECULE_DISTRO: ${{ matrix.distro }}
-        run: cat /tmp/k8s-config/democratic-csi/*
+        run: molecule test
