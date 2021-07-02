@@ -57,7 +57,7 @@ driver:
     iscsi:
       targetPortal: "{{ democratic_csi_iscsi_portal }}"
       targetPortals: {{ democratic_csi_iscsi_portals }}
-      interface: {{ democratic_csi_iscsi_interface | default(omit) }}
+      interface: {{ democratic_csi_iscsi_interface }}
       namePrefix: "{{ democratic_csi_iscsi_portal_namePrefix }}"
       nameSuffix: "{{ democratic_csi_iscsi_portal_nameSuffix }}"
       targetGroups:

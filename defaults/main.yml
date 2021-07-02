@@ -55,6 +55,7 @@ democratic_csi_iscsi_extentXenCompat: false
 democratic_csi_iscsi_extentDisablePhysicalBlocksize: "4096"
 democratic_csi_iscsi_extentRpm: ""
 democratic_csi_iscsi_extentAvailThreshold: "0"
+democratic_csi_iscsi_interface:
 
 #TrueNAS nfs related default values
 democratic_csi_nfs_sc_mountOptions:
