@@ -12,24 +12,29 @@
     mode: '0700'
 
 - name: "copy values file"
-  ansible.builtin.template:
-    src: "values-{{ item.driver }}.yml.j2"
-    dest: "/tmp/k8s-config/democratic-csi/values-{{ item.driver }}.yml"
-    mode: '0600'
+  ansible.builtin.debug:
+    msg: "{{ democratic_csi }}"
   loop: "{{ democratic_csi.release }}"
+
+# - name: "copy values file"
+#   ansible.builtin.template:
+#     src: "values-{{ item.driver }}.yml.j2"
+#     dest: "/tmp/k8s-config/democratic-csi/values-{{ item.driver }}.yml"
+#     mode: '0600'
+#   loop: "{{ democratic_csi.release }}"
 
 - name: Deploy democratic-csi chart using values files on target
   community.kubernetes.helm:
-    release_name: "{{ item }}"
+    release_name: "{{ item.name }}"
     chart_ref: democratic-csi/democratic-csi
     release_namespace: "{{ item.namespace | default(democratic_csi.default_release_namespace) }}"
-    chart_version: "{{ democratic_csi_chart_version }}"
+    chart_version: "{{ democratic_csi.default_chart_version }}"
     create_namespace: true
     update_repo_cache: true
     wait: true
     wait_timeout: "20m"
     values_files:
-      - "/tmp/k8s-config/democratic-csi/values-{{ item }}.yml"
+      - "/tmp/k8s-config/democratic-csi/values-{{ item.name }}.yml"
     kubeconfig: "{{ kubeconfig }}"
   loop: "{{ democratic_csi.release }}"
   when: not democratic_csi.check_config_only
