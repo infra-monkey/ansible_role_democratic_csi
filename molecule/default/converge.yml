@@ -6,7 +6,7 @@
   vars:
     democratic_csi:
       keep_tmpfiles: true
-      config_only: true
+      check_config_only: true
       default_api_host: "truenas.example.com"
       default_api_allowInsecure: true
       default_api_key: "astronguniquesecurekey"
