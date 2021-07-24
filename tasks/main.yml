@@ -12,10 +12,6 @@
     mode: '0700'
 
 - name: "debug"
-  ansible.builtin.debug:
-    msg: "{{ vars }}"
-
-- name: "debug"
   ansible.builtin.template:
     src: "values-test.yml.j2"
     dest: "/tmp/k8s-config/democratic-csi/values-test.yml"

@@ -1,4 +1,5 @@
 ---
+democratic_csi_iscsi_sc_reclaimPolicy: "Delete"
 democratic_csi:
   #role related default values
   keep_tmpfiles: false
