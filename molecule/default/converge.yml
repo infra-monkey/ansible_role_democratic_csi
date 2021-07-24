@@ -17,7 +17,11 @@
           driver: "freenas-iscsi"
           zfs_datasetParentName: "pool/k8s/v"
           zfs_detachedSnapshotsDatasetParentName: "pool/k8s/s"
-          portal: "192.168.1.99:3260"
+          #portal: "192.168.1.99:3260"
+          portals:
+            - "192.168.1.97:3260"
+            - "192.168.1.98:3260"
+            - "192.168.1.99:3260"
           portalGroup: "1"
           pnitiatorGroup: "1"
           zvolBlockSize: "64k"
