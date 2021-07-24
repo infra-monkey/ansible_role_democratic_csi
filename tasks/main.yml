@@ -16,7 +16,7 @@
     src: "values-{{ item.driver }}.yml.j2"
     dest: "/tmp/k8s-config/democratic-csi/values-{{ item.driver }}.yml"
     mode: '0600'
-  loop: democratic_csi.release
+  loop: democratic_csi.release | list
 
 - name: Deploy democratic-csi chart using values files on target
   community.kubernetes.helm:
