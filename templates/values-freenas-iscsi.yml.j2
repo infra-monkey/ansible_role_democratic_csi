@@ -3,7 +3,8 @@ csiDriver:
 storageClasses:
 - name: "{{ item.name }}
   defaultClass: {{ item.sc_defaultClass | default(false) }}
-  reclaimPolicy: "{{ item.sc_reclaimPolicy | default(democratic_csi['default_iscsi_sc_reclaimPolicy']) }}"
+  #reclaimPolicy: "{{ item.sc_reclaimPolicy | default(democratic_csi['default_iscsi_sc_reclaimPolicy']) }}"
+  reclaimPolicy: "{{ item.sc_reclaimPolicy | default(lookup('dict',democratic_csi.default_iscsi_sc_reclaimPolicy)) }}"
   volumeBindingMode: "{{ item.sc_volumeBindingMode | default(democratic_csi.default_iscsi_sc_volumeBindingMode) }}"
   allowVolumeExpansion: {{ item.sc_allowVolumeExpansion | default(democratic_csi.default_iscsi_sc_allowVolumeExpansion) }}
   parameters:
