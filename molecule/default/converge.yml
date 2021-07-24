@@ -32,7 +32,7 @@
             -----END RSA PRIVATE KEY-----
         - name: "truenas-nfs"
           driver: "freenas-nfs"
-          sc_defaultClass: true
+          sc_defaultClass: "true"
           nfs_host: "192.168.1.99"
           # nfs_shareAllowedNetworks:
           #   - "192.168.1.0/24"
