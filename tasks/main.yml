@@ -14,7 +14,7 @@
 - name: "copy values file"
   ansible.builtin.template:
     src: "values-{{ item.driver }}.yml.j2"
-    dest: "/tmp/k8s-config/democratic-csi/values-{{ item.driver }}.yml"
+    dest: "/tmp/k8s-config/democratic-csi/values-{{ item.driver }}-{{ item.name }}.yml"
     mode: '0600'
   loop: "{{ democratic_csi.release }}"
 
