@@ -1,78 +1,62 @@
 ---
+democratic_csi_release_namespace: democratic-csi
+democratic_csi_chart_version: "0.8.3"
+democratic_csi_api_protocol: https
+democratic_csi_api_host: "127.0.0.1"
+democratic_csi_api_port: "443"
+democratic_csi_api_key: "random-api-key"
+democratic_csi_api_allowInsecure: false
+democratic_csi_ssh_host: "127.0.0.1"
+democratic_csi_ssh_port: "22"
+democratic_csi_ssh_username: csi
+democratic_csi_zfs_sudoEnabled: true
+democratic_csi_iscsi_sc_mountOptions: []
 democratic_csi_iscsi_sc_reclaimPolicy: "Delete"
-democratic_csi:
-  #role related default values
-  keep_tmpfiles: false
-  check_config_only: false
-
-  #democratic-csi helm chart related default values
-  default_release_namespace: democratic-csi
-  # to list version: helm search repo democratic-csi/democratic-csi --versions
-  default_chart_version: "0.8.3"
-
-  #TrueNas api related deafult values
-  default_api_protocol: https
-  default_api_host: "127.0.0.1"
-  default_api_port: "443"
-  default_api_key: "random-api-key"
-  default_api_allowInsecure: false
-
-  #ssh command related default values
-  default_ssh_host: "127.0.0.1"
-  default_ssh_port: "22"
-  default_ssh_username: csi
-  default_zfs_sudoEnabled: true
-
-  #TrueNAS iscsi related default values
-  default_iscsi_sc_mountOptions: []
-  default_iscsi_sc_reclaimPolicy: "Delete"
-  default_iscsi_sc_volumeBindingMode: "Immediate"
-  default_iscsi_sc_allowVolumeExpansion: true
-  default_iscsi_sc_fsType: "xfs"
-  default_iscsi_sc_detachedVolumesFromSnapshots: "false"
-  default_iscsi_sc_detachedVolumesFromVolumes: "false"
-  default_iscsi_volumeSnapshotClasses: []
-  default_iscsi_zfs_datasetParentName: ""
-  default_iscsi_zfs_detachedSnapshotsDatasetParentName: ""
-  default_iscsi_zvolCompression: ""
-  default_iscsi_zvolDedup: ""
-  default_iscsi_zvolEnableReservation: false
-  default_iscsi_zvolBlockSize: "16k"
-  default_iscsi_portal: "127.0.0.1:3260"
-  default_iscsi_portals: []
-  default_iscsi_portal_namePrefix: "csi-"
-  default_iscsi_portal_nameSuffix: "-prd"
-  default_iscsi_portal_PortalGroup: "1"
-  default_iscsi_portal_InitiatorGroup: "1"
-  default_iscsi_portal_GroupAuthType: "None"
-  default_iscsi_portal_GroupAuthGroup:
-  default_iscsi_extentInsecureTpc: true
-  default_iscsi_extentXenCompat: false
-  default_iscsi_extentDisablePhysicalBlocksize: "4096"
-  default_iscsi_extentRpm: ""
-  default_iscsi_extentAvailThreshold: "0"
-  default_iscsi_interface:
-
-  #TrueNAS nfs related default values
-  default_nfs_sc_mountOptions:
+democratic_csi_iscsi_sc_volumeBindingMode: "Immediate"
+democratic_csi_iscsi_sc_allowVolumeExpansion: true
+democratic_csi_iscsi_sc_fsType: "xfs"
+democratic_csi_iscsi_sc_detachedVolumesFromSnapshots: "false"
+democratic_csi_iscsi_sc_detachedVolumesFromVolumes: "false"
+democratic_csi_iscsi_volumeSnapshotClasses: []
+democratic_csi_iscsi_zfs_datasetParentName: ""
+democratic_csi_iscsi_zfs_detachedSnapshotsDatasetParentName: ""
+democratic_csi_iscsi_zvolCompression: ""
+democratic_csi_iscsi_zvolDedup: ""
+democratic_csi_iscsi_zvolEnableReservation: false
+democratic_csi_iscsi_zvolBlockSize: "16k"
+democratic_csi_iscsi_portal: "127.0.0.1:3260"
+democratic_csi_iscsi_portals: []
+democratic_csi_iscsi_portal_namePrefix: "csi-"
+democratic_csi_iscsi_portal_nameSuffix: "-prd"
+democratic_csi_iscsi_portal_PortalGroup: "1"
+democratic_csi_iscsi_portal_InitiatorGroup: "1"
+democratic_csi_iscsi_portal_GroupAuthType: "None"
+democratic_csi_iscsi_portal_GroupAuthGroup:
+democratic_csi_iscsi_extentInsecureTpc: true
+democratic_csi_iscsi_extentXenCompat: false
+democratic_csi_iscsi_extentDisablePhysicalBlocksize: "4096"
+democratic_csi_iscsi_extentRpm: ""
+democratic_csi_iscsi_extentAvailThreshold: "0"
+democratic_csi_iscsi_interface:
+democratic_csi_nfs_sc_mountOptions:
     - noatime
     - nfsvers=4
-  default_nfs_sc_reclaimPolicy: "Delete"
-  default_nfs_sc_volumeBindingMode: "Immediate"
-  default_nfs_sc_allowVolumeExpansion: true
-  default_nfs_volumeSnapshotClasses: []
-  default_nfs_zfs_datasetParentName: ""
-  default_nfs_zfs_detachedSnapshotsDatasetParentName: ""
-  default_nfs_zfs_datasetEnableQuotas: true
-  default_nfs_zfs_datasetEnableReservation: false
-  default_nfs_zfs_datasetPermissionsMode: "0777"
-  default_nfs_zfs_datasetPermissionsUser: "root"
-  default_nfs_zfs_datasetPermissionsGroup: "root"
-  default_nfs_host: "127.0.0.1"
-  default_nfs_shareAlldirs: false
-  default_nfs_shareAllowedHosts: []
-  default_nfs_shareAllowedNetworks: []
-  default_nfs_shareMaprootUser: "root"
-  default_nfs_shareMaprootGroup: "root"
-  default_nfs_shareMapallUser: ""
-  default_nfs_shareMapallGroup: ""
+democratic_csi_nfs_sc_reclaimPolicy: "Delete"
+democratic_csi_nfs_sc_volumeBindingMode: "Immediate"
+democratic_csi_nfs_sc_allowVolumeExpansion: true
+democratic_csi_nfs_volumeSnapshotClasses: []
+democratic_csi_nfs_zfs_datasetParentName: ""
+democratic_csi_nfs_zfs_detachedSnapshotsDatasetParentName: ""
+democratic_csi_nfs_zfs_datasetEnableQuotas: true
+democratic_csi_nfs_zfs_datasetEnableReservation: false
+democratic_csi_nfs_zfs_datasetPermissionsMode: "0777"
+democratic_csi_nfs_zfs_datasetPermissionsUser: "root"
+democratic_csi_nfs_zfs_datasetPermissionsGroup: "root"
+democratic_csi_nfs_host: "127.0.0.1"
+democratic_csi_nfs_shareAlldirs: false
+democratic_csi_nfs_shareAllowedHosts: []
+democratic_csi_nfs_shareAllowedNetworks: []
+democratic_csi_nfs_shareMaprootUser: "root"
+democratic_csi_nfs_shareMaprootGroup: "root"
+democratic_csi_nfs_shareMapallUser: ""
+democratic_csi_nfs_shareMapallGroup: ""

@@ -11,12 +11,6 @@
     state: directory
     mode: '0700'
 
-- name: "debug"
-  ansible.builtin.template:
-    src: "values-test.yml.j2"
-    dest: "/tmp/k8s-config/democratic-csi/values-test.yml"
-    mode: '0600'
-
 - name: "copy values file"
   ansible.builtin.template:
     src: "values-{{ item.driver }}.yml.j2"
@@ -28,8 +22,8 @@
   community.kubernetes.helm:
     release_name: "{{ item.name }}"
     chart_ref: democratic-csi/democratic-csi
-    release_namespace: "{{ item.namespace | default(democratic_csi.default_release_namespace) }}"
-    chart_version: "{{ democratic_csi.default_chart_version }}"
+    release_namespace: "{{ item.namespace | default(democratic_csi_release_namespace) }}"
+    chart_version: "{{ democratic_csi_chart_version }}"
     create_namespace: true
     update_repo_cache: true
     wait: true
@@ -38,10 +32,10 @@
       - "/tmp/k8s-config/democratic-csi/values-{{ item.name }}.yml"
     kubeconfig: "{{ kubeconfig }}"
   loop: "{{ democratic_csi.release }}"
-  when: not democratic_csi.check_config_only
+  when: not democratic_csi.check_config_only|default(false)
 
 - name: "Remove configuration temporary directory"
   ansible.builtin.file:
     path: "/tmp/k8s-config/democratic-csi"
     state: absent
-  when: not democratic_csi.keep_tmpfiles
+  when: not democratic_csi.keep_tmpfiles|default(false)
