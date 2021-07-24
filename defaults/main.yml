@@ -4,15 +4,10 @@ democratic_csi:
   keep_tmpfiles: false
   check_config_only: false
 
-
   #democratic-csi helm chart related default values
   default_release_namespace: democratic-csi
   # to list version: helm search repo democratic-csi/democratic-csi --versions
   default_chart_version: "0.8.3"
-
-  protocol:
-    - truenas-iscsi
-    - truenas-nfs
 
   #TrueNas api related deafult values
   default_api_protocol: https
