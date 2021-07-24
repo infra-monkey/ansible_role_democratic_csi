@@ -1,6 +1,6 @@
 csiDriver:
   # should be globally unique for a given cluster
-  name: "org.democratic-csi.{{ item.name }}"
+  name: "org.democratic-csi.{{ item.driver }}-{{ item.name }}"
 
 storageClasses:
 - name: "{{ item.name }}"

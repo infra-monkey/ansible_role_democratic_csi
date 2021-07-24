@@ -1,5 +1,5 @@
 csiDriver:
-  name: "org.democratic-csi.{{ item.name }}"
+  name: "org.democratic-csi.{{ item.driver }}-{{ item.name }}"
 storageClasses:
 - name: "{{ item.name }}"
   defaultClass: {{ item.sc_defaultClass | default(false) }}

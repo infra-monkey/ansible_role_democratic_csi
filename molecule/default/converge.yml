@@ -17,13 +17,13 @@
           driver: "freenas-iscsi"
           zfs_datasetParentName: "pool/k8s/v"
           zfs_detachedSnapshotsDatasetParentName: "pool/k8s/s"
-          #portal: "192.168.1.99:3260"
-          portals:
-            - "192.168.1.97:3260"
-            - "192.168.1.98:3260"
-            - "192.168.1.99:3260"
+          portal: "192.168.1.99:3260"
+          # portals:
+          #   - "192.168.1.97:3260"
+          #   - "192.168.1.98:3260"
+          #   - "192.168.1.99:3260"
           portalGroup: "1"
-          pnitiatorGroup: "1"
+          initiatorGroup: "1"
           zvolBlockSize: "64k"
           extentRpm: "5400"
           ssh_privatekey: |
@@ -34,13 +34,12 @@
           driver: "freenas-nfs"
           sc_defaultClass: true
           nfs_host: "192.168.1.99"
-          nfs_shareAllowedNetworks:
-            - "192.168.1.0/24"
-            - "192.168.2.0/24"
+          # nfs_shareAllowedNetworks:
+          #   - "192.168.1.0/24"
+          #   - "192.168.2.0/24"
           ssh_privatekey: |
             -----BEGIN RSA PRIVATE KEY-----
             ...
             -----END RSA PRIVATE KEY-----
-
   roles:
     - role: "infra_monkey.democratic_csi"
