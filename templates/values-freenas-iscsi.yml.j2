@@ -68,6 +68,6 @@ driver:
       extentInsecureTpc: {{ item.extentInsecureTpc | default(democratic_csi_iscsi_extentInsecureTpc) }}
       extentXenCompat: {{ item.extentXenCompat | default(democratic_csi_iscsi_extentXenCompat) }}
       extentDisablePhysicalBlocksize: true
-      extentBlocksize: "{{ item.extentDisablePhysicalBlocksize | default(democratic_csiiscsi_extentDisablePhysicalBlocksize) }}"
+      extentBlocksize: "{{ item.extentDisablePhysicalBlocksize | default(democratic_csi_iscsi_extentDisablePhysicalBlocksize) }}"
       extentRpm: "{{ item.extentRpm | default(democratic_csi_iscsi_extentRpm) }}"
       extentAvailThreshold: "{{ item.extentAvailThreshold | default(democratic_csi_iscsi_extentAvailThreshold) }}"
