@@ -60,3 +60,27 @@ democratic_csi_nfs_shareMaprootUser: "root"
 democratic_csi_nfs_shareMaprootGroup: "root"
 democratic_csi_nfs_shareMapallUser: ""
 democratic_csi_nfs_shareMapallGroup: ""
+democratic_csi_smb_sc_mountOptions:
+    - dir_mode=0777
+    - file_mode=0777
+    - uid=1001
+    - gid=1001
+democratic_csi_smb_sc_reclaimPolicy: "Delete"
+democratic_csi_smb_sc_volumeBindingMode: "Immediate"
+democratic_csi_smb_sc_allowVolumeExpansion: true
+democratic_csi_smb_volumeSnapshotClasses: []
+democratic_csi_smb_zfs_datasetParentName: ""
+democratic_csi_smb_zfs_detachedSnapshotsDatasetParentName: ""
+democratic_csi_smb_zfs_datasetEnableQuotas: true
+democratic_csi_smb_zfs_datasetEnableReservation: false
+democratic_csi_smb_zfs_datasetPermissionsMode: "0777"
+democratic_csi_smb_zfs_datasetPermissionsUser: "root"
+democratic_csi_smb_zfs_datasetPermissionsGroup: "root"
+democratic_csi_smb_zfs_datasetPermissionsAcls:
+    - "-m everyone@:full_set:allow"
+democratic_csi_smb_host: "127.0.0.1"
+democratic_csi_smb_shareAllowedHosts: []
+democratic_csi_smb_shareDeniedHosts: []
+democratic_csi_smb_nameTemplate: ""
+democratic_csi_smb_namePrefix: ""
+democratic_csi_smb_nameSuffix: ""
