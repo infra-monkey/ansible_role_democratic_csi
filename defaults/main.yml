@@ -29,7 +29,6 @@ democratic_csi:
 
   #TrueNAS iscsi related default values
   default_iscsi_sc_mountOptions: []
-  default_iscsi_sc_defaultClass: false
   default_iscsi_sc_reclaimPolicy: "Delete"
   default_iscsi_sc_volumeBindingMode: "Immediate"
   default_iscsi_sc_allowVolumeExpansion: true
@@ -62,7 +61,6 @@ democratic_csi:
   default_nfs_sc_mountOptions:
     - noatime
     - nfsvers=4
-  default_nfs_sc_defaultClass: false
   default_nfs_sc_reclaimPolicy: "Delete"
   default_nfs_sc_volumeBindingMode: "Immediate"
   default_nfs_sc_allowVolumeExpansion: true
