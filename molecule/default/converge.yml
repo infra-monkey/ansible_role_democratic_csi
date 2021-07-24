@@ -4,14 +4,14 @@
   connection: local
   become: true
   vars:
+    democratic_csi_api_host: "truenas.example.com"
+    democratic_csi_api_allowInsecure: true
+    democratic_csi_api_key: "astronguniquesecurekey"
+    democratic_csi_ssh_host: "truenas.example.com"
+    democratic_csi_zfs_sudoEnabled: true
     democratic_csi:
       keep_tmpfiles: true
       check_config_only: true
-      default_api_host: "truenas.example.com"
-      default_api_allowInsecure: true
-      default_api_key: "astronguniquesecurekey"
-      default_ssh_host: "truenas.example.com"
-      default_zfs_sudoEnabled: true
       release:
         - name: "truenas-iscsi"
           driver: "freenas-iscsi"
