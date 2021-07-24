@@ -1,6 +1,6 @@
 ---
 democratic_csi:
-#role related default values
+  #role related default values
   keep_tmpfiles: false
   check_config_only: false
 

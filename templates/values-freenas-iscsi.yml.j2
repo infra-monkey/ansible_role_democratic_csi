@@ -7,7 +7,7 @@ storageClasses:
   volumeBindingMode: "{{ item.sc_volumeBindingMode | default(democratic_csi.default_iscsi_sc_volumeBindingMode) }}"
   allowVolumeExpansion: {{ item.sc_allowVolumeExpansion | default(democratic_csi.default_iscsi_sc_allowVolumeExpansion) }}
   parameters:
-    fsType: "{{ item.sc_fsType | default(democratic_csi_iscsi_sc_fsType) }}"
+    fsType: "{{ item.sc_fsType | default(democratic_csi.default_iscsi_sc_fsType) }}"
     detachedVolumesFromSnapshots: "{{ item.sc_detachedVolumesFromSnapshots | default(democratic_csi.default_iscsi_sc_detachedVolumesFromSnapshots) }}"
     detachedVolumesFromVolumes: "{{ item.sc_detachedVolumesFromVolumes | default(democratic_csi.default_iscsi_sc_detachedVolumesFromVolumes) }}"
   mountOptions: {{ item.sc_mountOptions | default(democratic_csi.default_iscsi_sc_mountOptions) }}
