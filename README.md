@@ -23,6 +23,14 @@ TODO !
 | ----- | ---- | -------- | ------------- | ----------- |
 | var | type | no | n.a. | description |
 
+democratic_csi:
+  release:
+    - name: "fast-storage"
+      driver: "freenas-nfs"
+      nfs_host: "192.168.1.2"
+      zfs_datasetParentName: "/tank/k8S/nfs"
+      namespace: "democratic-csi"
+
 # Help wanted
 
 I can test only on truenas storage. For zol target and nfs generic, any help in testing or developing is welcome.

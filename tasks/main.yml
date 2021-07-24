@@ -3,7 +3,7 @@
   community.kubernetes.helm_repository:
     name: democratic-csi
     repo_url: "https://democratic-csi.github.io/charts/"
-  when: not democratic_csi_check_config_only
+  when: not democratic_csi.check_config_only
 
 - name: "Ensure configuration directory is present"
   ansible.builtin.file:
@@ -13,16 +13,16 @@
 
 - name: "copy values file"
   ansible.builtin.template:
-    src: "values-{{ item }}.yml.j2"
-    dest: "/tmp/k8s-config/democratic-csi/values-{{ item }}.yml"
+    src: "values-{{ item.driver }}.yml.j2"
+    dest: "/tmp/k8s-config/democratic-csi/values-{{ item.driver }}.yml"
     mode: '0600'
-  loop: "{{ democratic_csi_protocol }}"
+  loop: "{{ democratic_csi.release }}"
 
 - name: Deploy democratic-csi chart using values files on target
   community.kubernetes.helm:
     release_name: "{{ item }}"
     chart_ref: democratic-csi/democratic-csi
-    release_namespace: "{{ democratic_csi_release_namespace }}"
+    release_namespace: "{{ item.namespace | default(democratic_csi.default_release_namespace) }}"
     chart_version: "{{ democratic_csi_chart_version }}"
     create_namespace: true
     update_repo_cache: true
@@ -31,11 +31,11 @@
     values_files:
       - "/tmp/k8s-config/democratic-csi/values-{{ item }}.yml"
     kubeconfig: "{{ kubeconfig }}"
-  loop: "{{ democratic_csi_protocol }}"
-  when: not democratic_csi_check_config_only
+  loop: "{{ democratic_csi.release }}"
+  when: not democratic_csi.check_config_only
 
 - name: "Remove configuration temporary directory"
   ansible.builtin.file:
     path: "/tmp/k8s-config/democratic-csi"
     state: absent
-  when: not democratic_csi_keep_tmpfiles
+  when: not democratic_csi.keep_tmpfiles
