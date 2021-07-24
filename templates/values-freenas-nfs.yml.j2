@@ -5,7 +5,7 @@ csiDriver:
 storageClasses:
 - name: "{{ item.name }}"
   defaultClass: {{ item.sc_defaultClass | default(false) }}
-  reclaimPolicy: "{{ item.sc_reclaimPolicy | default(democratic_csi.default_nfs_sc_reclaimPolicy) }}"
+  reclaimPolicy: "{{ item.sc_reclaimPolicy | default(democratic_csi['default_nfs_sc_reclaimPolicy']) }}"
   volumeBindingMode: "{{ item.sc_volumeBindingMode | default(democratic_csi.default_nfs_sc_volumeBindingMode) }}"
   allowVolumeExpansion: {{ item.sc_allowVolumeExpansion | default(democratic_csi.default_nfs_sc_allowVolumeExpansion) }}
   parameters:
