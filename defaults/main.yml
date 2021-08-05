@@ -1,15 +1,28 @@
 ---
+# General variables about the helm deployment
 democratic_csi_release_namespace: democratic-csi
 democratic_csi_chart_version: "0.8.3"
+
+# API connexion, used only for TrueNAS > 12.0-U3
 democratic_csi_api_protocol: https
 democratic_csi_api_host: "127.0.0.1"
 democratic_csi_api_port: "443"
 democratic_csi_api_key: "random-api-key"
 democratic_csi_api_allowInsecure: false
+
+# SSH connectivity variables. Useful if some parameters are common to several releases
 democratic_csi_ssh_host: "127.0.0.1"
 democratic_csi_ssh_port: "22"
 democratic_csi_ssh_username: csi
+
+# General ZFS related variables
 democratic_csi_zfs_sudoEnabled: true
+democratic_csi_zfs_path_zfs: /usr/local/sbin/zfs
+democratic_csi_zfs_path_zpool: /usr/local/sbin/zpool
+democratic_csi_zfs_path_sudo: /usr/local/bin/sudo
+democratic_csi_zfs_path_chroot: /usr/sbin/chroot
+
+# General iSCSI variables. Useful if some parameters are common to several releases (sane defaults for truenas)
 democratic_csi_iscsi_sc_mountOptions: []
 democratic_csi_iscsi_sc_reclaimPolicy: "Delete"
 democratic_csi_iscsi_sc_volumeBindingMode: "Immediate"
@@ -38,6 +51,8 @@ democratic_csi_iscsi_extentDisablePhysicalBlocksize: "4096"
 democratic_csi_iscsi_extentRpm: ""
 democratic_csi_iscsi_extentAvailThreshold: "0"
 democratic_csi_iscsi_interface:
+
+# General NFS variables. Useful if some parameters are common to several releases (sane defaults for truenas)
 democratic_csi_nfs_sc_mountOptions:
     - noatime
     - nfsvers=4
@@ -60,6 +75,8 @@ democratic_csi_nfs_shareMaprootUser: "root"
 democratic_csi_nfs_shareMaprootGroup: "root"
 democratic_csi_nfs_shareMapallUser: ""
 democratic_csi_nfs_shareMapallGroup: ""
+
+# General SMB variables. Useful if some parameters are common to several releases (sane defaults for truenas)
 democratic_csi_smb_sc_mountOptions:
     - dir_mode=0777
     - file_mode=0777

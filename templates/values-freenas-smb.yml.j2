@@ -46,10 +46,10 @@ driver:
       cli:
         sudoEnabled: {{ item.zfs_sudoEnabled | default(democratic_csi_zfs_sudoEnabled) }}
         paths:
-          zfs: /usr/local/sbin/zfs
-          zpool: /usr/local/sbin/zpool
-          sudo: /usr/local/bin/sudo
-          chroot: /usr/sbin/chroot
+          zfs: "{{ item.zfs_path_zfs | default(democratic_csi_zfs_path_zfs) }}"
+          zpool: "{{ item.zfs_path_zpool | default(democratic_csi_zfs_path_zpool) }}"
+          sudo: "{{ item.zfs_path_sudo | default(democratic_csi_zfs_path_sudo) }}"
+          chroot: "{{ item.zfs_path_chroot | default(democratic_csi_zfs_path_chroot) }}"
 
       datasetProperties:
         aclmode: restricted
