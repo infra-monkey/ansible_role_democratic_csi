@@ -1,0 +1,80 @@
+csiDriver:
+  # should be globally unique for a given cluster
+  name: "org.democratic-csi.{{ item.driver }}-{{ item.name }}"
+
+storageClasses:
+- name: "{{ item.name }}"
+  defaultClass: {{ item.sc_defaultClass | default(false) }}
+  reclaimPolicy: "{{ item.sc_reclaimPolicy | default(democratic_csi_nfs_sc_reclaimPolicy) }}"
+  volumeBindingMode: "{{ item.sc_volumeBindingMode | default(democratic_csi_nfs_sc_volumeBindingMode) }}"
+  allowVolumeExpansion: {{ item.sc_allowVolumeExpansion | default(democratic_csi_nfs_sc_allowVolumeExpansion) }}
+  parameters:
+    fsType: nfs
+
+  mountOptions: {{ item.sc_mountOptions | default(democratic_csi_nfs_sc_mountOptions) }}
+  secrets:
+    provisioner-secret:
+    controller-publish-secret:
+    node-stage-secret:
+    node-publish-secret:
+    controller-expand-secret:
+
+# if your cluster supports snapshots you may enable below
+volumeSnapshotClasses: {{ item.volumeSnapshotClasses | default(democratic_csi_nfs_volumeSnapshotClasses) }}
+#- name: freenas-iscsi-csi
+#  parameters:
+#  # if true, snapshots will be created with zfs send/receive
+#  # detachedSnapshots: "false"
+#  secrets:
+#    snapshotter-secret:
+
+driver:
+  config:
+    driver: "{{ item.driver }}"
+    instance_id:
+    httpConnection:
+      protocol: "{{ item.api_protocol | default(democratic_csi_api_protocol) }}"
+      host: "{{ item.api_host | default(democratic_csi_api_host) }}"
+      port: "{{ item.api_port | default(democratic_csi_api_port) }}"
+      apiKey: "{{ item.api_key | default(democratic_csi_api_key) }}"
+      allowInsecure: {{ item.api_allowInsecure | default(democratic_csi_api_allowInsecure) }}
+      apiVersion: 2
+    sshConnection:
+      host: "{{ item.ssh_host | default(democratic_csi_ssh_host) }}"
+      port: "{{ item.ssh_port | default(democratic_csi_ssh_port) }}"
+      username: "{{ item.ssh_username | default(democratic_csi_ssh_username) }}"
+{% if item.ssh_password is defined %}
+      password: "{{ item.ssh_password }}"
+{% endif %}
+{% if item.ssh_privatekey is defined %}
+      privateKey: |
+        {{ item.ssh_privatekey | indent(width=8) }}
+{% endif %}
+    zfs:
+      cli:
+        sudoEnabled: {{ item.zfs_sudoEnabled | default(democratic_csi_zfs_sudoEnabled) }}
+        paths:
+          zfs: "{{ item.zfs_path_zfs | default(democratic_csi_zfs_path_zfs) }}"
+          zpool: "{{ item.zfs_path_zpool | default(democratic_csi_zfs_path_zpool) }}"
+          sudo: "{{ item.zfs_path_sudo | default(democratic_csi_zfs_path_sudo) }}"
+          chroot: "{{ item.zfs_path_chroot | default(democratic_csi_zfs_path_chroot) }}"
+      # total volume name (zvol/<datasetParentName>/<pvc name>) length cannot exceed 63 chars
+      # https://www.ixsystems.com/documentation/freenas/11.2-U5/storage.html#zfs-zvol-config-opts-tab
+      # standard volume naming overhead is 46 chars
+      # datasetParentName should therefore be 17 chars or less
+      datasetParentName: "{{ item.zfs_datasetParentName | default(democratic_csi_nfs_zfs_datasetParentName) }}"
+      detachedSnapshotsDatasetParentName: "{{ item.zfs_detachedSnapshotsDatasetParentName | default(democratic_csi_nfs_zfs_detachedSnapshotsDatasetParentName) }}"
+      datasetEnableQuotas: {{ item.zfs_datasetEnableQuotas | default(democratic_csi_nfs_zfs_datasetEnableQuotas) }}
+      datasetEnableReservation: {{ item.zfs_datasetEnableReservation | default(democratic_csi_nfs_zfs_datasetEnableReservation) }}
+      datasetPermissionsMode: "{{ item.zfs_datasetPermissionsMode | default(democratic_csi_nfs_zfs_datasetPermissionsMode) }}"
+      datasetPermissionsUser: "{{ item.zfs_datasetPermissionsUser | default(democratic_csi_nfs_zfs_datasetPermissionsUser) }}"
+      datasetPermissionsGroup: "{{ item.zfs_datasetPermissionsGroup | default(democratic_csi_nfs_zfs_datasetPermissionsGroup) }}"
+    nfs:
+      shareHost: "{{ item.nfs_host | default(democratic_csi_nfs_host) }}"
+      shareAlldirs: {{ item.nfs_shareAlldirs | default(democratic_csi_nfs_shareAlldirs) }}
+      shareAllowedHosts: {{ item.nfs_shareAllowedHosts | default(democratic_csi_nfs_shareAllowedHosts) }}
+      shareAllowedNetworks: {{ item.nfs_shareAllowedNetworks | default(democratic_csi_nfs_shareAllowedNetworks) }}
+      shareMaprootUser: "{{ item.nfs_shareMaprootUser | default(democratic_csi_nfs_shareMaprootUser) }}"
+      shareMaprootGroup: "{{ item.nfs_shareMaprootGroup | default(democratic_csi_nfs_shareMaprootGroup) }}"
+      shareMapallUser: "{{ item.nfs_shareMapallUser | default(democratic_csi_nfs_shareMapallUser) }}"
+      shareMapallGroup: "{{ item.nfs_shareMapallGroup | default(democratic_csi_nfs_shareMapallGroup) }}"
