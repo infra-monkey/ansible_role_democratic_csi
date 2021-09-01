@@ -1,4 +1,3 @@
-add support for freenas-smb
 add support for zfs-generic-nfs
 add support for zfs-generic-iscsi
 add support for nfs-client

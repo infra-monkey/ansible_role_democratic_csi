@@ -5,20 +5,20 @@ csiDriver:
 storageClasses:
 - name: "{{ item.name }}"
   defaultClass: {{ item.sc_defaultClass | default(false) }}
-  reclaimPolicy: "{{ item.sc_reclaimPolicy | default(democratic_csi_sc_reclaimPolicy) }}"
-  volumeBindingMode: "{{ item.sc_volumeBindingMode | default(democratic_csi_sc_volumeBindingMode) }}"
-  allowVolumeExpansion: {{ item.sc_allowVolumeExpansion | default(democratic_csi_sc_allowVolumeExpansion) }}
+  reclaimPolicy: "{{ item.sc_reclaim_policy | default(democratic_csi_sc_reclaim_policy) }}"
+  volumeBindingMode: "{{ item.sc_volume_binding_mode | default(democratic_csi_sc_volume_binding_mode) }}"
+  allowVolumeExpansion: {{ item.sc_allow_volume_expansion | default(democratic_csi_sc_allow_volume_expansion) }}
   parameters:
     fsType: smb
 
-  mountOptions: {{ item.sc_mountOptions | default(democratic_csi_smb_sc_mountOptions) }}
+  mountOptions: {{ item.sc_mount_options | default(democratic_csi_smb_sc_mount_options) }}
   secrets:
     provisioner-secret:
     controller-publish-secret:
     node-stage-secret:
     node-publish-secret:
     controller-expand-secret:
-volumeSnapshotClasses: {{ item.volumeSnapshotClasses | default(democratic_csi_smb_volumeSnapshotClasses) }}
+volumeSnapshotClasses: {{ item.volume_snapshot_classes | default(democratic_csi_smb_volume_snapshot_classes) }}
 
 driver:
   config:
@@ -29,7 +29,7 @@ driver:
       host: "{{ item.api_host | default(democratic_csi_api_host) }}"
       port: "{{ item.api_port | default(democratic_csi_api_port) }}"
       apiKey: "{{ item.api_key | default(democratic_csi_api_key) }}"
-      allowInsecure: {{ item.api_allowInsecure | default(democratic_csi_api_allowInsecure) }}
+      allowInsecure: {{ item.api_allow_insecure | default(democratic_csi_api_allow_insecure) }}
       apiVersion: 2
     sshConnection:
       host: "{{ item.ssh_host | default(democratic_csi_ssh_host) }}"
@@ -44,7 +44,7 @@ driver:
 {% endif %}
     zfs:
       cli:
-        sudoEnabled: {{ item.zfs_sudoEnabled | default(democratic_csi_zfs_sudoEnabled) }}
+        sudoEnabled: {{ item.zfs_sudo_enabled | default(democratic_csi_zfs_sudo_enabled) }}
         paths:
           zfs: "{{ item.zfs_path_zfs | default(democratic_csi_zfs_path_zfs) }}"
           zpool: "{{ item.zfs_path_zpool | default(democratic_csi_zfs_path_zpool) }}"
@@ -55,20 +55,20 @@ driver:
         aclmode: restricted
         casesensitivity: mixed
 
-      datasetParentName: "{{ item.zfs_datasetParentName | default(democratic_csi_zfs_datasetParentName) }}"
-      detachedSnapshotsDatasetParentName: "{{ item.zfs_detachedSnapshotsDatasetParentName | default(democratic_csi_zfs_detachedSnapshotsDatasetParentName) }}"
-      datasetEnableQuotas: {{ item.zfs_datasetEnableQuotas | default(democratic_csi_zfs_datasetEnableQuotas) }}
-      datasetEnableReservation: {{ item.zfs_datasetEnableReservation | default(democratic_csi_zfs_datasetEnableReservation) }}
-      datasetPermissionsMode: "{{ item.zfs_datasetPermissionsMode | default(democratic_csi_smb_zfs_datasetPermissionsMode) }}"
-      datasetPermissionsUser: "{{ item.zfs_datasetPermissionsUser | default(democratic_csi_smb_zfs_datasetPermissionsUser) }}"
-      datasetPermissionsGroup: "{{ item.zfs_datasetPermissionsGroup | default(democratic_csi_smb_zfs_datasetPermissionsGroup) }}"
-      datasetPermissionsAcls: {{ item.zfs_datasetPermissionsAcls | default(democratic_csi_smb_zfs_datasetPermissionsAcls) }}
+      datasetParentName: "{{ item.zfs_dataset_parent_name | default(democratic_csi_zfs_dataset_parent_name) }}"
+      detachedSnapshotsDatasetParentName: "{{ item.zfs_detached_snapshots_dataset_parentName | default(democratic_csi_zfs_detached_snapshots_dataset_parentName) }}"
+      datasetEnableQuotas: {{ item.zfs_dataset_enable_quotas | default(democratic_csi_zfs_dataset_enable_quotas) }}
+      datasetEnableReservation: {{ item.zfs_dataset_enable_reservation | default(democratic_csi_zfs_dataset_enable_reservation) }}
+      datasetPermissionsMode: "{{ item.zfs_dataset_permissions_mode | default(democratic_csi_smb_zfs_dataset_permissions_mode) }}"
+      datasetPermissionsUser: "{{ item.zfs_dataset_permissions_user | default(democratic_csi_smb_zfs_dataset_permissions_user) }}"
+      datasetPermissionsGroup: "{{ item.zfs_dataset_permissions_group | default(democratic_csi_smb_zfs_dataset_permissions_group) }}"
+      datasetPermissionsAcls: {{ item.zfs_dataset_permissions_acls | default(democratic_csi_smb_zfs_dataset_permissions_acls) }}
 
     smb:
       shareHost: "{{ item.smb_host | default(democratic_csi_smb_host) }}"
-      nameTemplate: "{{ item.smb_nameTemplate | default(democratic_csi_smb_nameTemplate) }}"
-      namePrefix: "{{ item.smb_namePrefix | default(democratic_csi_smb_namePrefix) }}"
-      nameSuffix: "{{ item.smb_nameSuffix | default(democratic_csi_smb_nameSuffix) }}"
+      nameTemplate: "{{ item.smb_name_template | default(democratic_csi_smb_name_template) }}"
+      namePrefix: "{{ item.smb_name_prefix | default(democratic_csi_smb_name_prefix) }}"
+      nameSuffix: "{{ item.smb_name_suffix | default(democratic_csi_smb_name_suffix) }}"
       
       # if any of the shareFoo parameters do not work with your version of FreeNAS
       # simply comment the param (and use the configuration template if necessary)
@@ -77,8 +77,8 @@ driver:
         #guest ok = yes
         #guest only = yes
       shareHome: false
-      shareAllowedHosts: {{ item.smb_shareAllowedHosts | default(democratic_csi_smb_shareAllowedHosts) }}
-      shareDeniedHosts: {{ item.smb_shareDeniedHosts | default(democratic_csi_smb_shareDeniedHosts) }}
+      shareAllowedHosts: {{ item.smb_share_allowed_hosts | default(democratic_csi_smb_share_allowed_hosts) }}
+      shareDeniedHosts: {{ item.smb_share_denied_hosts | default(democratic_csi_smb_share_denied_hosts) }}
       #shareDefaultPermissions: true
       shareGuestOk: true
       #shareGuestOnly: true

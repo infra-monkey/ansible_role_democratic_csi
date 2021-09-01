@@ -5,12 +5,12 @@
   become: true
   vars:
     democratic_csi_api_host: "truenas.example.com"
-    democratic_csi_api_allowInsecure: true
+    democratic_csi_api_allow_insecure: true
     democratic_csi_api_key: "astronguniquesecurekey"
     democratic_csi_ssh_host: "truenas.example.com"
-    democratic_csi_zfs_sudoEnabled: true
-    democratic_csi_zfs_datasetParentName: "pool/k8s/v"
-    democratic_csi_zfs_detachedSnapshotsDatasetParentName: "pool/k8s/s"
+    democratic_csi_zfs_sudo_enabled: true
+    democratic_csi_zfs_dataset_parent_name: "pool/k8s/v"
+    democratic_csi_zfs_detached_snapshots_dataset_parentName: "pool/k8s/s"
     democratic_csi:
       keep_tmpfiles: true
       check_config_only: true
@@ -33,8 +33,8 @@
         - name: "truenas-nfs"
           driver: "freenas-nfs"
           sc_defaultClass: true
-          zfs_datasetParentName: "pool/k8s/nfs/v"
-          zfs_detachedSnapshotsDatasetParentName: "pool/k8s/nfs/s"
+          zfs_dataset_parent_name: "pool/k8s/nfs/v"
+          zfs_detached_snapshots_dataset_parentName: "pool/k8s/nfs/s"
           nfs_host: "192.168.1.99"
           nfs_shareAllowedNetworks:
             - "192.168.1.0/24"
@@ -45,8 +45,8 @@
             -----END RSA PRIVATE KEY-----
         - name: "truenas-smb"
           driver: "freenas-smb"
-          zfs_datasetParentName: "pool/k8s/smb/v"
-          zfs_detachedSnapshotsDatasetParentName: "pool/k8s/smb/s"
+          zfs_dataset_parent_name: "pool/k8s/smb/v"
+          zfs_detached_snapshots_dataset_parentName: "pool/k8s/smb/s"
           smb_host: "192.168.1.99"
           ssh_privatekey: |
             -----BEGIN RSA PRIVATE KEY-----
