@@ -21,21 +21,25 @@ democratic_csi_zfs_path_zfs: /usr/local/sbin/zfs
 democratic_csi_zfs_path_zpool: /usr/local/sbin/zpool
 democratic_csi_zfs_path_sudo: /usr/local/bin/sudo
 democratic_csi_zfs_path_chroot: /usr/sbin/chroot
+democratic_csi_zfs_datasetParentName: ""
+democratic_csi_zfs_detachedSnapshotsDatasetParentName: ""
+democratic_csi_zfs_datasetEnableQuotas: true
+democratic_csi_zfs_datasetEnableReservation: false
+
+# General storage class variables. Those default variables are applied to all drivers.
+democratic_csi_sc_reclaimPolicy: "Delete"
+democratic_csi_sc_volumeBindingMode: "Immediate"
+democratic_csi_sc_allowVolumeExpansion: true
+
 
 # General iSCSI variables. Useful if some parameters are common to several releases (sane defaults for truenas)
 democratic_csi_iscsi_sc_mountOptions: []
-democratic_csi_iscsi_sc_reclaimPolicy: "Delete"
-democratic_csi_iscsi_sc_volumeBindingMode: "Immediate"
-democratic_csi_iscsi_sc_allowVolumeExpansion: true
 democratic_csi_iscsi_sc_fsType: "xfs"
 democratic_csi_iscsi_sc_detachedVolumesFromSnapshots: "false"
 democratic_csi_iscsi_sc_detachedVolumesFromVolumes: "false"
 democratic_csi_iscsi_volumeSnapshotClasses: []
-democratic_csi_iscsi_zfs_datasetParentName: ""
-democratic_csi_iscsi_zfs_detachedSnapshotsDatasetParentName: ""
 democratic_csi_iscsi_zvolCompression: ""
 democratic_csi_iscsi_zvolDedup: ""
-democratic_csi_iscsi_zvolEnableReservation: false
 democratic_csi_iscsi_zvolBlockSize: "16k"
 democratic_csi_iscsi_portal: "127.0.0.1:3260"
 democratic_csi_iscsi_portals: []
@@ -56,14 +60,7 @@ democratic_csi_iscsi_interface:
 democratic_csi_nfs_sc_mountOptions:
     - noatime
     - nfsvers=4
-democratic_csi_nfs_sc_reclaimPolicy: "Delete"
-democratic_csi_nfs_sc_volumeBindingMode: "Immediate"
-democratic_csi_nfs_sc_allowVolumeExpansion: true
 democratic_csi_nfs_volumeSnapshotClasses: []
-democratic_csi_nfs_zfs_datasetParentName: ""
-democratic_csi_nfs_zfs_detachedSnapshotsDatasetParentName: ""
-democratic_csi_nfs_zfs_datasetEnableQuotas: true
-democratic_csi_nfs_zfs_datasetEnableReservation: false
 democratic_csi_nfs_zfs_datasetPermissionsMode: "0777"
 democratic_csi_nfs_zfs_datasetPermissionsUser: "root"
 democratic_csi_nfs_zfs_datasetPermissionsGroup: "root"
@@ -82,14 +79,7 @@ democratic_csi_smb_sc_mountOptions:
     - file_mode=0777
     - uid=1001
     - gid=1001
-democratic_csi_smb_sc_reclaimPolicy: "Delete"
-democratic_csi_smb_sc_volumeBindingMode: "Immediate"
-democratic_csi_smb_sc_allowVolumeExpansion: true
 democratic_csi_smb_volumeSnapshotClasses: []
-democratic_csi_smb_zfs_datasetParentName: ""
-democratic_csi_smb_zfs_detachedSnapshotsDatasetParentName: ""
-democratic_csi_smb_zfs_datasetEnableQuotas: true
-democratic_csi_smb_zfs_datasetEnableReservation: false
 democratic_csi_smb_zfs_datasetPermissionsMode: "0777"
 democratic_csi_smb_zfs_datasetPermissionsUser: "root"
 democratic_csi_smb_zfs_datasetPermissionsGroup: "root"

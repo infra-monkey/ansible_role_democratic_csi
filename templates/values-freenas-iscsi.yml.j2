@@ -3,9 +3,9 @@ csiDriver:
 storageClasses:
 - name: "{{ item.name }}"
   defaultClass: {{ item.sc_defaultClass | default(false) }}
-  reclaimPolicy: "{{ item.sc_reclaimPolicy | default(democratic_csi_iscsi_sc_reclaimPolicy) }}"
-  volumeBindingMode: "{{ item.sc_volumeBindingMode | default(democratic_csi_iscsi_sc_volumeBindingMode) }}"
-  allowVolumeExpansion: {{ item.sc_allowVolumeExpansion | default(democratic_csi_iscsi_sc_allowVolumeExpansion) }}
+  reclaimPolicy: "{{ item.sc_reclaimPolicy | default(democratic_csi_sc_reclaimPolicy) }}"
+  volumeBindingMode: "{{ item.sc_volumeBindingMode | default(democratic_csi_sc_volumeBindingMode) }}"
+  allowVolumeExpansion: {{ item.sc_allowVolumeExpansion | default(democratic_csi_sc_allowVolumeExpansion) }}
   parameters:
     fsType: "{{ item.sc_fsType | default(democratic_csi_iscsi_sc_fsType) }}"
     detachedVolumesFromSnapshots: "{{ item.sc_detachedVolumesFromSnapshots | default(democratic_csi_iscsi_sc_detachedVolumesFromSnapshots) }}"
@@ -48,11 +48,11 @@ driver:
           zpool: "{{ item.zfs_path_zpool | default(democratic_csi_zfs_path_zpool) }}"
           sudo: "{{ item.zfs_path_sudo | default(democratic_csi_zfs_path_sudo) }}"
           chroot: "{{ item.zfs_path_chroot | default(democratic_csi_zfs_path_chroot) }}"
-      datasetParentName: "{{ item.zfs_datasetParentName | default(democratic_csi_iscsi_zfs_datasetParentName) }}"
-      detachedSnapshotsDatasetParentName: "{{ item.zfs_detachedSnapshotsDatasetParentName | default(democratic_csi_iscsi_zfs_detachedSnapshotsDatasetParentName) }}"
+      datasetParentName: "{{ item.zfs_datasetParentName | default(democratic_csizfs_datasetParentName) }}"
+      detachedSnapshotsDatasetParentName: "{{ item.zfs_detachedSnapshotsDatasetParentName | default(democratic_csi_zfs_detachedSnapshotsDatasetParentName) }}"
       zvolCompression: "{{ item.zvolCompression | default(democratic_csi_iscsi_zvolCompression) }}"
       zvolDedup: "{{ item.zvolDedup | default(democratic_csi_iscsi_zvolDedup) }}"
-      zvolEnableReservation: "{{ item.zvolEnableReservation | default(democratic_csi_iscsi_zvolEnableReservation) }}"
+      zvolEnableReservation: "{{ item.zvolEnableReservation | default(democratic_csi_zfs_datasetEnableReservation) }}"
       zvolBlocksize: "{{ item.zvolBlockSize | default(democratic_csi_iscsi_zvolBlockSize) }}"
     iscsi:
       targetPortal: "{{ item.portal | default(democratic_csi_iscsi_portal) }}"

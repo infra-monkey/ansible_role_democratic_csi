@@ -5,9 +5,9 @@ csiDriver:
 storageClasses:
 - name: "{{ item.name }}"
   defaultClass: {{ item.sc_defaultClass | default(false) }}
-  reclaimPolicy: "{{ item.sc_reclaimPolicy | default(democratic_csi_smb_sc_reclaimPolicy) }}"
-  volumeBindingMode: "{{ item.sc_volumeBindingMode | default(democratic_csi_smb_sc_volumeBindingMode) }}"
-  allowVolumeExpansion: {{ item.sc_allowVolumeExpansion | default(democratic_csi_smb_sc_allowVolumeExpansion) }}
+  reclaimPolicy: "{{ item.sc_reclaimPolicy | default(democratic_csi_sc_reclaimPolicy) }}"
+  volumeBindingMode: "{{ item.sc_volumeBindingMode | default(democratic_csi_sc_volumeBindingMode) }}"
+  allowVolumeExpansion: {{ item.sc_allowVolumeExpansion | default(democratic_csi_sc_allowVolumeExpansion) }}
   parameters:
     fsType: smb
 
@@ -55,10 +55,10 @@ driver:
         aclmode: restricted
         casesensitivity: mixed
 
-      datasetParentName: "{{ item.zfs_datasetParentName | default(democratic_csi_smb_zfs_datasetParentName) }}"
-      detachedSnapshotsDatasetParentName: "{{ item.zfs_detachedSnapshotsDatasetParentName | default(democratic_csi_smb_zfs_detachedSnapshotsDatasetParentName) }}"
-      datasetEnableQuotas: {{ item.zfs_datasetEnableQuotas | default(democratic_csi_smb_zfs_datasetEnableQuotas) }}
-      datasetEnableReservation: {{ item.zfs_datasetEnableReservation | default(democratic_csi_smb_zfs_datasetEnableReservation) }}
+      datasetParentName: "{{ item.zfs_datasetParentName | default(democratic_csi_zfs_datasetParentName) }}"
+      detachedSnapshotsDatasetParentName: "{{ item.zfs_detachedSnapshotsDatasetParentName | default(democratic_csi_zfs_detachedSnapshotsDatasetParentName) }}"
+      datasetEnableQuotas: {{ item.zfs_datasetEnableQuotas | default(democratic_csi_zfs_datasetEnableQuotas) }}
+      datasetEnableReservation: {{ item.zfs_datasetEnableReservation | default(democratic_csi_zfs_datasetEnableReservation) }}
       datasetPermissionsMode: "{{ item.zfs_datasetPermissionsMode | default(democratic_csi_smb_zfs_datasetPermissionsMode) }}"
       datasetPermissionsUser: "{{ item.zfs_datasetPermissionsUser | default(democratic_csi_smb_zfs_datasetPermissionsUser) }}"
       datasetPermissionsGroup: "{{ item.zfs_datasetPermissionsGroup | default(democratic_csi_smb_zfs_datasetPermissionsGroup) }}"
