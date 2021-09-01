@@ -5,13 +5,13 @@ csiDriver:
 storageClasses:
 - name: "{{ item.name }}"
   defaultClass: {{ item.sc_defaultClass | default(false) }}
-  reclaimPolicy: "{{ item.sc_reclaimPolicy | default(democratic_csi_nfs_sc_reclaimPolicy) }}"
-  volumeBindingMode: "{{ item.sc_volumeBindingMode | default(democratic_csi_nfs_sc_volumeBindingMode) }}"
-  allowVolumeExpansion: {{ item.sc_allowVolumeExpansion | default(democratic_csi_nfs_sc_allowVolumeExpansion) }}
+  reclaimPolicy: "{{ item.sc_reclaim_policy | default(democratic_csi_sc_reclaim_policy) }}"
+  volumeBindingMode: "{{ item.sc_volume_binding_mode | default(democratic_csi_sc_volume_binding_mode) }}"
+  allowVolumeExpansion: {{ item.sc_allow_volume_expansion | default(democratic_csi_sc_allow_volume_expansion) }}
   parameters:
     fsType: nfs
 
-  mountOptions: {{ item.sc_mountOptions | default(democratic_csi_nfs_sc_mountOptions) }}
+  mountOptions: {{ item.sc_mount_options | default(democratic_csi_nfs_sc_mount_options) }}
   secrets:
     provisioner-secret:
     controller-publish-secret:
@@ -20,7 +20,7 @@ storageClasses:
     controller-expand-secret:
 
 # if your cluster supports snapshots you may enable below
-volumeSnapshotClasses: {{ item.volumeSnapshotClasses | default(democratic_csi_nfs_volumeSnapshotClasses) }}
+volumeSnapshotClasses: {{ item.volume_snapshot_classes | default(democratic_csi_nfs_volume_snapshot_classes) }}
 #- name: freenas-iscsi-csi
 #  parameters:
 #  # if true, snapshots will be created with zfs send/receive
@@ -37,7 +37,7 @@ driver:
       host: "{{ item.api_host | default(democratic_csi_api_host) }}"
       port: "{{ item.api_port | default(democratic_csi_api_port) }}"
       apiKey: "{{ item.api_key | default(democratic_csi_api_key) }}"
-      allowInsecure: {{ item.api_allowInsecure | default(democratic_csi_api_allowInsecure) }}
+      allowInsecure: {{ item.api_allow_insecure | default(democratic_csi_api_allow_insecure) }}
       apiVersion: 2
     sshConnection:
       host: "{{ item.ssh_host | default(democratic_csi_ssh_host) }}"
@@ -52,7 +52,7 @@ driver:
 {% endif %}
     zfs:
       cli:
-        sudoEnabled: {{ item.zfs_sudoEnabled | default(democratic_csi_zfs_sudoEnabled) }}
+        sudoEnabled: {{ item.zfs_sudo_enabled | default(democratic_csi_zfs_sudo_enabled) }}
         paths:
           zfs: "{{ item.zfs_path_zfs | default(democratic_csi_zfs_path_zfs) }}"
           zpool: "{{ item.zfs_path_zpool | default(democratic_csi_zfs_path_zpool) }}"
@@ -62,19 +62,19 @@ driver:
       # https://www.ixsystems.com/documentation/freenas/11.2-U5/storage.html#zfs-zvol-config-opts-tab
       # standard volume naming overhead is 46 chars
       # datasetParentName should therefore be 17 chars or less
-      datasetParentName: "{{ item.zfs_datasetParentName | default(democratic_csi_nfs_zfs_datasetParentName) }}"
-      detachedSnapshotsDatasetParentName: "{{ item.zfs_detachedSnapshotsDatasetParentName | default(democratic_csi_nfs_zfs_detachedSnapshotsDatasetParentName) }}"
-      datasetEnableQuotas: {{ item.zfs_datasetEnableQuotas | default(democratic_csi_nfs_zfs_datasetEnableQuotas) }}
-      datasetEnableReservation: {{ item.zfs_datasetEnableReservation | default(democratic_csi_nfs_zfs_datasetEnableReservation) }}
-      datasetPermissionsMode: "{{ item.zfs_datasetPermissionsMode | default(democratic_csi_nfs_zfs_datasetPermissionsMode) }}"
-      datasetPermissionsUser: "{{ item.zfs_datasetPermissionsUser | default(democratic_csi_nfs_zfs_datasetPermissionsUser) }}"
-      datasetPermissionsGroup: "{{ item.zfs_datasetPermissionsGroup | default(democratic_csi_nfs_zfs_datasetPermissionsGroup) }}"
+      datasetParentName: "{{ item.zfs_dataset_parent_name | default(democratic_csi_zfs_dataset_parent_name) }}"
+      detachedSnapshotsDatasetParentName: "{{ item.zfs_detached_snapshots_dataset_parent_name | default(democratic_csi_zfs_detached_snapshots_dataset_parent_name) }}"
+      datasetEnableQuotas: {{ item.zfs_dataset_enable_quotas | default(democratic_csi_zfs_dataset_enable_quotas) }}
+      datasetEnableReservation: {{ item.zfs_dataset_enable_reservation | default(democratic_csi_zfs_dataset_enable_reservation) }}
+      datasetPermissionsMode: "{{ item.zfs_dataset_permissions_mode | default(democratic_csi_nfs_zfs_dataset_permissions_mode) }}"
+      datasetPermissionsUser: "{{ item.zfs_dataset_permissions_user | default(democratic_csi_nfs_zfs_dataset_permissions_user) }}"
+      datasetPermissionsGroup: "{{ item.zfs_dataset_permissions_group | default(democratic_csi_nfs_zfs_dataset_permissions_group) }}"
     nfs:
       shareHost: "{{ item.nfs_host | default(democratic_csi_nfs_host) }}"
-      shareAlldirs: {{ item.nfs_shareAlldirs | default(democratic_csi_nfs_shareAlldirs) }}
-      shareAllowedHosts: {{ item.nfs_shareAllowedHosts | default(democratic_csi_nfs_shareAllowedHosts) }}
-      shareAllowedNetworks: {{ item.nfs_shareAllowedNetworks | default(democratic_csi_nfs_shareAllowedNetworks) }}
-      shareMaprootUser: "{{ item.nfs_shareMaprootUser | default(democratic_csi_nfs_shareMaprootUser) }}"
-      shareMaprootGroup: "{{ item.nfs_shareMaprootGroup | default(democratic_csi_nfs_shareMaprootGroup) }}"
-      shareMapallUser: "{{ item.nfs_shareMapallUser | default(democratic_csi_nfs_shareMapallUser) }}"
-      shareMapallGroup: "{{ item.nfs_shareMapallGroup | default(democratic_csi_nfs_shareMapallGroup) }}"
+      shareAlldirs: {{ item.nfs_shareAlldirs | default(democratic_csi_nfs_share_alldirs) }}
+      shareAllowedHosts: {{ item.nfs_share_allowed_hosts | default(democratic_csi_nfs_share_allowed_hosts) }}
+      shareAllowedNetworks: {{ item.nfs_share_allowed_networks | default(democratic_csi_nfs_share_allowed_networks) }}
+      shareMaprootUser: "{{ item.nfs_share_maproot_user | default(democratic_csi_nfs_share_maproot_user) }}"
+      shareMaprootGroup: "{{ item.nfs_share_maproot_group | default(democratic_csi_nfs_share_maproot_group) }}"
+      shareMapallUser: "{{ item.nfs_share_mapall_user | default(democratic_csi_nfs_share_mapall_user) }}"
+      shareMapallGroup: "{{ item.nfs_share_mapall_group | default(democratic_csi_nfs_share_mapall_group) }}"
