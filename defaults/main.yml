@@ -22,7 +22,7 @@ democratic_csi_zfs_path_zpool: /usr/local/sbin/zpool
 democratic_csi_zfs_path_sudo: /usr/local/bin/sudo
 democratic_csi_zfs_path_chroot: /usr/sbin/chroot
 democratic_csi_zfs_dataset_parent_name: ""
-democratic_csi_zfs_detached_snapshots_dataset_parentName: ""
+democratic_csi_zfs_detached_snapshots_dataset_parent_name: ""
 democratic_csi_zfs_dataset_enable_quotas: true
 democratic_csi_zfs_dataset_enable_reservation: false
 

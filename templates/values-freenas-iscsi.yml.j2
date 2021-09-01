@@ -49,7 +49,7 @@ driver:
           sudo: "{{ item.zfs_path_sudo | default(democratic_csi_zfs_path_sudo) }}"
           chroot: "{{ item.zfs_path_chroot | default(democratic_csi_zfs_path_chroot) }}"
       datasetParentName: "{{ item.zfs_dataset_parent_name | default(democratic_csi_zfs_dataset_parent_name) }}"
-      detachedSnapshotsDatasetParentName: "{{ item.zfs_detached_snapshots_dataset_parentName | default(democratic_csi_zfs_detached_snapshots_dataset_parentName) }}"
+      detachedSnapshotsDatasetParentName: "{{ item.zfs_detached_snapshots_dataset_parent_name | default(democratic_csi_zfs_detached_snapshots_dataset_parent_name) }}"
       zvolCompression: "{{ item.zvol_compression | default(democratic_csi_iscsi_zvol_compression) }}"
       zvolDedup: "{{ item.zvol_dedup | default(democratic_csi_iscsi_zvol_dedup) }}"
       zvolEnableReservation: "{{ item.zvol_enable_reservation | default(democratic_csi_zfs_dataset_enable_reservation) }}"

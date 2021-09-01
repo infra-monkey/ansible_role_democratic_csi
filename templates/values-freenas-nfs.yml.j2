@@ -63,7 +63,7 @@ driver:
       # standard volume naming overhead is 46 chars
       # datasetParentName should therefore be 17 chars or less
       datasetParentName: "{{ item.zfs_dataset_parent_name | default(democratic_csi_zfs_dataset_parent_name) }}"
-      detachedSnapshotsDatasetParentName: "{{ item.zfs_detached_snapshots_dataset_parentName | default(democratic_csi_zfs_detached_snapshots_dataset_parentName) }}"
+      detachedSnapshotsDatasetParentName: "{{ item.zfs_detached_snapshots_dataset_parent_name | default(democratic_csi_zfs_detached_snapshots_dataset_parent_name) }}"
       datasetEnableQuotas: {{ item.zfs_dataset_enable_quotas | default(democratic_csi_zfs_dataset_enable_quotas) }}
       datasetEnableReservation: {{ item.zfs_dataset_enable_reservation | default(democratic_csi_zfs_dataset_enable_reservation) }}
       datasetPermissionsMode: "{{ item.zfs_dataset_permissions_mode | default(democratic_csi_nfs_zfs_dataset_permissions_mode) }}"

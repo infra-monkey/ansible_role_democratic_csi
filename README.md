@@ -72,7 +72,7 @@ democratic_csi:
 | sc_allow_volume_expansion | boolean | no | `democratic_csi_sc_allow_volume_expansion` | Allow the storage class to extend the volume. |
 | volume_snapshot_classes | list | no | `democratic_csi_nfs_volume_snapshot_classes` | Storage class for snapshots. |
 | zfs_dataset_parent_name | string | no | `democratic_csi_zfs_dataset_parent_name` | Zfs parent dataset where to create the share.  |
-| zfs_detached_snapshots_dataset_parentName | string | no | `democratic_csi_zfs_detached_snapshots_dataset_parentName` | |
+| zfs_detached_snapshots_dataset_parent_name | string | no | `democratic_csi_zfs_detached_snapshots_dataset_parent_name` | |
 | zfs_dataset_enable_quotas | boolean | no | `democratic_csi_zfs_dataset_enable_quotas` | Enable zfs quota on the shared dataset. |
 | zfs_dataset_enable_reservation | boolean | no | `democratic_csi_zfs_dataset_enable_reservation` | Enable zfs reservation on the shared dataset. |
 | zfs_dataset_permissions_mode | string | no | `democratic_csi_nfs_zfs_dataset_permissions_mode` |  |
@@ -100,7 +100,7 @@ democratic_csi:
 | sc_detached_volumes_from_volumes | string | no | `democratic_csi_iscsi_sc_detached_volumes_from_volumes` |  |
 | volume_snapshot_classes | list | no | `democratic_csi_iscsi_volume_snapshot_classes` | Storage class to use for snapshots. |
 | zfs_dataset_parent_name | string | no | `democratic_csi_zfs_dataset_parent_name` | Zfs parent dataset where to create the share. |
-| zfs_detached_snapshots_dataset_parentName | string | no | `democratic_csi_zfs_detached_snapshots_dataset_parentName` |  |
+| zfs_detached_snapshots_dataset_parent_name | string | no | `democratic_csi_zfs_detached_snapshots_dataset_parent_name` |  |
 | zvol_compression | string | no | `democratic_csi_iscsi_zvol_compression` | Enable zfs compression on the create zvol. |
 | zvol_dedup | string | no | `democratic_csi_iscsi_zvol_dedup` | Enable zfs deduplication on the create zvol. |
 | zvol_enable_reservation | boolean | no | `democratic_csi_zfs_dataset_enable_reservation` | Enable reservation on the create zvol. |
@@ -130,7 +130,7 @@ democratic_csi:
 | sc_allow_volume_expansion | boolean | no | `democratic_csi_sc_allow_volume_expansion` | Allow the storage class to extend the volume. |
 | volume_snapshot_classes | list | no | `democratic_csi_smb_volume_snapshot_classes` | Storage class for snapshots. |
 | zfs_dataset_parent_name | string | no | `democratic_csi_zfs_dataset_parent_name` | Zfs parent dataset where to create the share. |
-| zfs_detached_snapshots_dataset_parentName | string | no | `democratic_csi_zfs_detached_snapshots_dataset_parentName` |  |
+| zfs_detached_snapshots_dataset_parent_name | string | no | `democratic_csi_zfs_detached_snapshots_dataset_parent_name` |  |
 | zfs_dataset_enable_quotas | boolean | no | `democratic_csi_zfs_dataset_enable_quotas` | Enable zfs quota on the shared dataset. |
 | zfs_dataset_enable_reservation | boolean | no | `democratic_csi_zfs_dataset_enable_reservation` | Enable zfs reservation on the shared dataset. |
 | zfs_dataset_permissions_mode | string | no | `democratic_csi_smb_zfs_dataset_permissions_mode` |  |
