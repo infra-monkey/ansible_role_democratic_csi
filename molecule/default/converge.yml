@@ -9,14 +9,14 @@
     democratic_csi_api_key: "astronguniquesecurekey"
     democratic_csi_ssh_host: "truenas.example.com"
     democratic_csi_zfs_sudoEnabled: true
+    democratic_csi_zfs_datasetParentName: "pool/k8s/v"
+    democratic_csi_zfs_detachedSnapshotsDatasetParentName: "pool/k8s/s"
     democratic_csi:
       keep_tmpfiles: true
       check_config_only: true
       release:
         - name: "truenas-iscsi"
           driver: "freenas-iscsi"
-          zfs_datasetParentName: "pool/k8s/v"
-          zfs_detachedSnapshotsDatasetParentName: "pool/k8s/s"
           portal: "192.168.1.99:3260"
           portals:
             - "192.168.1.97:3260"
