@@ -7,9 +7,9 @@ storageClasses:
   volumeBindingMode: "{{ item.sc_volume_binding_mode | default(democratic_csi_sc_volume_binding_mode) }}"
   allowVolumeExpansion: {{ item.sc_allow_volume_expansion | default(democratic_csi_sc_allow_volume_expansion) }}
   parameters:
-    fsType: "{{ item.sc_fsType | default(democratic_csi_iscsi_sc_fsType) }}"
-    detachedVolumesFromSnapshots: "{{ item.sc_detachedVolumesFromSnapshots | default(democratic_csi_iscsi_sc_detachedVolumesFromSnapshots) }}"
-    detachedVolumesFromVolumes: "{{ item.sc_detachedVolumesFromVolumes | default(democratic_csi_iscsi_sc_detachedVolumesFromVolumes) }}"
+    fsType: "{{ item.sc_fs_type | default(democratic_csi_iscsi_sc_fs_type) }}"
+    detachedVolumesFromSnapshots: "{{ item.sc_detached_volumes_from_snapshots | default(democratic_csi_iscsi_sc_detached_volumes_from_snapshots) }}"
+    detachedVolumesFromVolumes: "{{ item.sc_detached_volumes_from_volumes | default(democratic_csi_iscsi_sc_detached_volumes_from_volumes) }}"
   mountOptions: {{ item.sc_mount_options | default(democratic_csi_iscsi_sc_mount_options) }}
   secrets:
     provisioner-secret:
@@ -50,10 +50,10 @@ driver:
           chroot: "{{ item.zfs_path_chroot | default(democratic_csi_zfs_path_chroot) }}"
       datasetParentName: "{{ item.zfs_dataset_parent_name | default(democratic_csi_zfs_dataset_parent_name) }}"
       detachedSnapshotsDatasetParentName: "{{ item.zfs_detached_snapshots_dataset_parentName | default(democratic_csi_zfs_detached_snapshots_dataset_parentName) }}"
-      zvolCompression: "{{ item.zvolCompression | default(democratic_csi_iscsi_zvolCompression) }}"
-      zvolDedup: "{{ item.zvolDedup | default(democratic_csi_iscsi_zvolDedup) }}"
-      zvolEnableReservation: "{{ item.zvolEnableReservation | default(democratic_csi_zfs_dataset_enable_reservation) }}"
-      zvolBlocksize: "{{ item.zvolBlockSize | default(democratic_csi_iscsi_zvolBlockSize) }}"
+      zvolCompression: "{{ item.zvol_compression | default(democratic_csi_iscsi_zvol_compression) }}"
+      zvolDedup: "{{ item.zvol_dedup | default(democratic_csi_iscsi_zvol_dedup) }}"
+      zvolEnableReservation: "{{ item.zvol_enable_reservation | default(democratic_csi_zfs_dataset_enable_reservation) }}"
+      zvolBlocksize: "{{ item.zvol_block_size | default(democratic_csi_iscsi_zvol_block_size) }}"
     iscsi:
       targetPortal: "{{ item.portal | default(democratic_csi_iscsi_portal) }}"
       targetPortals: {{ item.portals | default(democratic_csi_iscsi_portals) }}
@@ -61,13 +61,13 @@ driver:
       namePrefix: "{{ item.portal_name_prefix | default(democratic_csi_iscsi_portal_name_prefix) }}"
       nameSuffix: "{{ item.portal_name_suffix | default(democratic_csi_iscsi_portal_name_suffix) }}"
       targetGroups:
-        - targetGroupPortalGroup: "{{ item.portalGroup | default(democratic_csi_iscsi_portal_PortalGroup) }}"
-          targetGroupInitiatorGroup: "{{ item.initiatorGroup | default(democratic_csi_iscsi_portal_InitiatorGroup) }}"
-          targetGroupAuthType: "{{ item.groupAuthType | default(democratic_csi_iscsi_portal_GroupAuthType) }}"
-          targetGroupAuthGroup: {{ item.groupAuthGroup | default(democratic_csi_iscsi_portal_GroupAuthGroup) }}
-      extentInsecureTpc: {{ item.extentInsecureTpc | default(democratic_csi_iscsi_extentInsecureTpc) }}
-      extentXenCompat: {{ item.extentXenCompat | default(democratic_csi_iscsi_extentXenCompat) }}
+        - targetGroupPortalGroup: "{{ item.portalGroup | default(democratic_csi_iscsi_portal_portal_group) }}"
+          targetGroupInitiatorGroup: "{{ item.initiatorGroup | default(democratic_csi_iscsi_portal_initiator_group) }}"
+          targetGroupAuthType: "{{ item.groupAuthType | default(democratic_csi_iscsi_portal_group_auth_type) }}"
+          targetGroupAuthGroup: {{ item.groupAuthGroup | default(democratic_csi_iscsi_portal_group_auth_group) }}
+      extentInsecureTpc: {{ item.extent_insecure_tpc | default(democratic_csi_iscsi_extent_insecure_tpc) }}
+      extentXenCompat: {{ item.extent_xen_compat | default(democratic_csi_iscsi_extent_xen_compat) }}
       extentDisablePhysicalBlocksize: true
-      extentBlocksize: "{{ item.extentDisablePhysicalBlocksize | default(democratic_csi_iscsi_extentDisablePhysicalBlocksize) }}"
-      extentRpm: "{{ item.extentRpm | default(democratic_csi_iscsi_extentRpm) }}"
-      extentAvailThreshold: "{{ item.extentAvailThreshold | default(democratic_csi_iscsi_extentAvailThreshold) }}"
+      extentBlocksize: "{{ item.extent_disable_physical_blocksize | default(democratic_csi_iscsi_extent_disable_physical_blocksize) }}"
+      extentRpm: "{{ item.extent_rpm | default(democratic_csi_iscsi_extent_rpm) }}"
+      extentAvailThreshold: "{{ item.extent_avail_threshold | default(democratic_csi_iscsi_extent_avail_threshold) }}"

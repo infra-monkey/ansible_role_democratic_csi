@@ -71,10 +71,10 @@ driver:
       datasetPermissionsGroup: "{{ item.zfs_dataset_permissions_group | default(democratic_csi_nfs_zfs_dataset_permissions_group) }}"
     nfs:
       shareHost: "{{ item.nfs_host | default(democratic_csi_nfs_host) }}"
-      shareAlldirs: {{ item.nfs_shareAlldirs | default(democratic_csi_nfs_shareAlldirs) }}
+      shareAlldirs: {{ item.nfs_shareAlldirs | default(democratic_csi_nfs_share_alldirs) }}
       shareAllowedHosts: {{ item.nfs_share_allowed_hosts | default(democratic_csi_nfs_share_allowed_hosts) }}
-      shareAllowedNetworks: {{ item.nfs_shareAllowedNetworks | default(democratic_csi_nfs_shareAllowedNetworks) }}
-      shareMaprootUser: "{{ item.nfs_shareMaprootUser | default(democratic_csi_nfs_shareMaprootUser) }}"
-      shareMaprootGroup: "{{ item.nfs_shareMaprootGroup | default(democratic_csi_nfs_shareMaprootGroup) }}"
-      shareMapallUser: "{{ item.nfs_shareMapallUser | default(democratic_csi_nfs_shareMapallUser) }}"
-      shareMapallGroup: "{{ item.nfs_shareMapallGroup | default(democratic_csi_nfs_shareMapallGroup) }}"
+      shareAllowedNetworks: {{ item.nfs_share_allowed_networks | default(democratic_csi_nfs_share_allowed_networks) }}
+      shareMaprootUser: "{{ item.nfs_share_maproot_user | default(democratic_csi_nfs_share_maproot_user) }}"
+      shareMaprootGroup: "{{ item.nfs_share_maproot_group | default(democratic_csi_nfs_share_maproot_group) }}"
+      shareMapallUser: "{{ item.nfs_share_mapall_user | default(democratic_csi_nfs_share_mapall_user) }}"
+      shareMapallGroup: "{{ item.nfs_share_mapall_group | default(democratic_csi_nfs_share_mapall_group) }}"

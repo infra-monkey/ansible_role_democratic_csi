@@ -34,26 +34,26 @@ democratic_csi_sc_allow_volume_expansion: true
 
 # General iSCSI variables. Useful if some parameters are common to several releases (sane defaults for truenas)
 democratic_csi_iscsi_sc_mount_options: []
-democratic_csi_iscsi_sc_fsType: "xfs"
-democratic_csi_iscsi_sc_detachedVolumesFromSnapshots: "false"
-democratic_csi_iscsi_sc_detachedVolumesFromVolumes: "false"
+democratic_csi_iscsi_sc_fs_type: "xfs"
+democratic_csi_iscsi_sc_detached_volumes_from_snapshots: "false"
+democratic_csi_iscsi_sc_detached_volumes_from_volumes: "false"
 democratic_csi_iscsi_volume_snapshot_classes: []
-democratic_csi_iscsi_zvolCompression: ""
-democratic_csi_iscsi_zvolDedup: ""
-democratic_csi_iscsi_zvolBlockSize: "16k"
+democratic_csi_iscsi_zvol_compression: ""
+democratic_csi_iscsi_zvol_dedup: ""
+democratic_csi_iscsi_zvol_block_size: "16k"
 democratic_csi_iscsi_portal: "127.0.0.1:3260"
 democratic_csi_iscsi_portals: []
 democratic_csi_iscsi_portal_name_prefix: "csi-"
 democratic_csi_iscsi_portal_name_suffix: "-prd"
-democratic_csi_iscsi_portal_PortalGroup: "1"
-democratic_csi_iscsi_portal_InitiatorGroup: "1"
-democratic_csi_iscsi_portal_GroupAuthType: "None"
-democratic_csi_iscsi_portal_GroupAuthGroup:
-democratic_csi_iscsi_extentInsecureTpc: true
-democratic_csi_iscsi_extentXenCompat: false
-democratic_csi_iscsi_extentDisablePhysicalBlocksize: "4096"
-democratic_csi_iscsi_extentRpm: ""
-democratic_csi_iscsi_extentAvailThreshold: "0"
+democratic_csi_iscsi_portal_portal_group: "1"
+democratic_csi_iscsi_portal_initiator_group: "1"
+democratic_csi_iscsi_portal_group_auth_type: "None"
+democratic_csi_iscsi_portal_group_auth_group:
+democratic_csi_iscsi_extent_insecure_tpc: true
+democratic_csi_iscsi_extent_xen_compat: false
+democratic_csi_iscsi_extent_disable_physical_blocksize: "4096"
+democratic_csi_iscsi_extent_rpm: ""
+democratic_csi_iscsi_extent_avail_threshold: "0"
 democratic_csi_iscsi_interface:
 
 # General NFS variables. Useful if some parameters are common to several releases (sane defaults for truenas)
@@ -65,13 +65,13 @@ democratic_csi_nfs_zfs_dataset_permissions_mode: "0777"
 democratic_csi_nfs_zfs_dataset_permissions_user: "root"
 democratic_csi_nfs_zfs_dataset_permissions_group: "root"
 democratic_csi_nfs_host: "127.0.0.1"
-democratic_csi_nfs_shareAlldirs: false
+democratic_csi_nfs_share_alldirs: false
 democratic_csi_nfs_share_allowed_hosts: []
-democratic_csi_nfs_shareAllowedNetworks: []
-democratic_csi_nfs_shareMaprootUser: "root"
-democratic_csi_nfs_shareMaprootGroup: "root"
-democratic_csi_nfs_shareMapallUser: ""
-democratic_csi_nfs_shareMapallGroup: ""
+democratic_csi_nfs_share_allowed_networks: []
+democratic_csi_nfs_share_maproot_user: "root"
+democratic_csi_nfs_share_maproot_group: "root"
+democratic_csi_nfs_share_mapall_user: ""
+democratic_csi_nfs_share_mapall_group: ""
 
 # General SMB variables. Useful if some parameters are common to several releases (sane defaults for truenas)
 democratic_csi_smb_sc_mount_options:

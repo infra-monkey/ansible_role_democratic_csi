@@ -24,8 +24,8 @@
             - "192.168.1.99:3260"
           portalGroup: "1"
           initiatorGroup: "1"
-          zvolBlockSize: "64k"
-          extentRpm: "5400"
+          zvol_block_size: "64k"
+          extent_rpm: "5400"
           ssh_privatekey: |
             -----BEGIN RSA PRIVATE KEY-----
             xxx
@@ -36,7 +36,7 @@
           zfs_dataset_parent_name: "pool/k8s/nfs/v"
           zfs_detached_snapshots_dataset_parentName: "pool/k8s/nfs/s"
           nfs_host: "192.168.1.99"
-          nfs_shareAllowedNetworks:
+          nfs_share_allowed_networks:
             - "192.168.1.0/24"
             - "192.168.2.0/24"
           ssh_privatekey: |

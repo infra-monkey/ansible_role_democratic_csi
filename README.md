@@ -79,13 +79,13 @@ democratic_csi:
 | zfs_dataset_permissions_user | string | no | `democratic_csi_nfs_zfs_dataset_permissions_user` |  |
 | zfs_dataset_permissions_group | string | no | `democratic_csi_nfs_zfs_dataset_permissions_group` |  |
 | host | string | no | `democratic_csi_nfs_host` | IP or hostname of the nfs host to reach. |
-| shareAlldirs | boolean | no | `democratic_csi_nfs_shareAlldirs` |  |
+| shareAlldirs | boolean | no | `democratic_csi_nfs_share_alldirs` |  |
 | share_allowed_hosts | list | no | `democratic_csi_nfs_share_allowed_hosts` |  |
-| shareAllowedNetworks | list | no | `democratic_csi_nfs_shareAllowedNetworks` |  |
-| shareMaprootUser | string | no | `democratic_csi_nfs_shareMaprootUser` |  |
-| shareMaprootGroup | string | no | `democratic_csi_nfs_shareMaprootGroup` |  |
-| shareMapallUser | string | no | `democratic_csi_nfs_shareMapallUser` |  |
-| shareMapallGroup | string | no | `democratic_csi_nfs_shareMapallGroup` |  |
+| share_allowed_networks | list | no | `democratic_csi_nfs_share_allowed_networks` |  |
+| share_maproot_user | string | no | `democratic_csi_nfs_share_maproot_user` |  |
+| share_maproot_group | string | no | `democratic_csi_nfs_share_maproot_group` |  |
+| share_mapall_user | string | no | `democratic_csi_nfs_share_mapall_user` |  |
+| share_mapall_group | string | no | `democratic_csi_nfs_share_mapall_group` |  |
 
 ## Variables specific to iscsi drivers
 
@@ -95,29 +95,29 @@ democratic_csi:
 | sc_reclaim_policy | string | yes | `democratic_csi_sc_reclaim_policy` | Reclaim policy of the storage class. |
 | sc_volume_binding_mode | string | no | `democratic_csi_sc_volume_binding_mode` | Binding mode of the storage class. |
 | sc_allow_volume_expansion | boolean | no | `democratic_csi_sc_allow_volume_expansion` | Allow the storage class to extend the volume. |
-| sc_fsType | string | no | `democratic_csi_iscsi_sc_fsType` | Filesystem type to create by the storage class. |
-| sc_detachedVolumesFromSnapshots | string | no | `democratic_csi_iscsi_sc_detachedVolumesFromSnapshots` |  |
-| sc_detachedVolumesFromVolumes | string | no | `democratic_csi_iscsi_sc_detachedVolumesFromVolumes` |  |
+| sc_fs_type | string | no | `democratic_csi_iscsi_sc_fs_type` | Filesystem type to create by the storage class. |
+| sc_detached_volumes_from_snapshots | string | no | `democratic_csi_iscsi_sc_detached_volumes_from_snapshots` |  |
+| sc_detached_volumes_from_volumes | string | no | `democratic_csi_iscsi_sc_detached_volumes_from_volumes` |  |
 | volume_snapshot_classes | list | no | `democratic_csi_iscsi_volume_snapshot_classes` | Storage class to use for snapshots. |
 | zfs_dataset_parent_name | string | no | `democratic_csi_zfs_dataset_parent_name` | Zfs parent dataset where to create the share. |
 | zfs_detached_snapshots_dataset_parentName | string | no | `democratic_csi_zfs_detached_snapshots_dataset_parentName` |  |
-| zvolCompression | string | no | `democratic_csi_iscsi_zvolCompression` | Enable zfs compression on the create zvol. |
-| zvolDedup | string | no | `democratic_csi_iscsi_zvolDedup` | Enable zfs deduplication on the create zvol. |
-| zvolEnableReservation | boolean | no | `democratic_csi_zfs_dataset_enable_reservation` | Enable reservation on the create zvol. |
-| zvolBlockSize | string | no | `democratic_csi_iscsi_zvolBlockSize` | Block size of the zvol. |
+| zvol_compression | string | no | `democratic_csi_iscsi_zvol_compression` | Enable zfs compression on the create zvol. |
+| zvol_dedup | string | no | `democratic_csi_iscsi_zvol_dedup` | Enable zfs deduplication on the create zvol. |
+| zvol_enable_reservation | boolean | no | `democratic_csi_zfs_dataset_enable_reservation` | Enable reservation on the create zvol. |
+| zvol_block_size | string | no | `democratic_csi_iscsi_zvol_block_size` | Block size of the zvol. |
 | portal | string | no | `democratic_csi_iscsi_portal` | ip:port designation of the iscsi portal to connect to. |
 | portals | list | no | `democratic_csi_iscsi_portals` | List of portals in case of distributed portals. |
 | portal_name_prefix | string | no | `democratic_csi_iscsi_portal_name_prefix` | Prefix of the zvol name. |
 | portal_name_suffix | string | no | `democratic_csi_iscsi_portal_name_suffix` | Suffix of the zvol name. |
-| portal_PortalGroup | string | no | `democratic_csi_iscsi_portal_PortalGroup` |  |
-| portal_InitiatorGroup | string | no | `democratic_csi_iscsi_portal_InitiatorGroup` |  |
-| portal_GroupAuthType | string | no | `democratic_csi_iscsi_portal_GroupAuthType` |  |
-| portal_GroupAuthGroup | string | no | `democratic_csi_iscsi_portal_GroupAuthGroup` |  |
-| extentInsecureTpc | boolean | no | `democratic_csi_iscsi_extentInsecureTpc` |  |
-| extentXenCompat | boolean | no | `democratic_csi_iscsi_extentXenCompat` | Enable Xen compatibility. |
-| extentDisablePhysicalBlocksize | string | no | `democratic_csi_iscsi_extentDisablePhysicalBlocksize` |  |
-| extentRpm | string | no | `democratic_csi_iscsi_extentRpm` | Rotation speed of the drives on the zfs storage. |
-| extentAvailThreshold | string | no | `democratic_csi_iscsi_extentAvailThreshold` |  |
+| portal_portal_group | string | no | `democratic_csi_iscsi_portal_portal_group` |  |
+| portal_initiator_group | string | no | `democratic_csi_iscsi_portal_initiator_group` |  |
+| portal_group_auth_type | string | no | `democratic_csi_iscsi_portal_group_auth_type` |  |
+| portal_group_auth_group | string | no | `democratic_csi_iscsi_portal_group_auth_group` |  |
+| extent_insecure_tpc | boolean | no | `democratic_csi_iscsi_extent_insecure_tpc` |  |
+| extent_xen_compat | boolean | no | `democratic_csi_iscsi_extent_xen_compat` | Enable Xen compatibility. |
+| extent_disable_physical_blocksize | string | no | `democratic_csi_iscsi_extent_disable_physical_blocksize` |  |
+| extent_rpm | string | no | `democratic_csi_iscsi_extent_rpm` | Rotation speed of the drives on the zfs storage. |
+| extent_avail_threshold | string | no | `democratic_csi_iscsi_extent_avail_threshold` |  |
 | interface | string | no | `democratic_csi_iscsi_interface` |  |
 
 ## Variables specific to samba drivers
