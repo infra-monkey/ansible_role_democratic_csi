@@ -19,6 +19,7 @@ jobs:
         distro:
           - centos8
           - debian10
+          - debian11
     steps:
       - uses: actions/checkout@v2
         with:
@@ -30,7 +31,7 @@ jobs:
       - name: Install dependencies
         run: |
           python3 -m pip install --upgrade pip
-          python3 -m pip install ansible~=2.10 molecule[docker] docker openshift
+          python3 -m pip install ansible~=2.10 ansible-lint molecule[docker] docker openshift
       - name: Test with molecule
         env:
           PY_COLORS: '1'
