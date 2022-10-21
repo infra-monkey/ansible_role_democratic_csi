@@ -19,7 +19,7 @@
   loop: "{{ democratic_csi.release }}"
 
 - name: Deploy democratic-csi chart using values files on target
-  community.kubernetes.helm:
+  kubernetes.core.helm:
     release_name: "{{ item.name }}"
     chart_ref: democratic-csi/democratic-csi
     release_namespace: "{{ item.namespace | default(democratic_csi_release_namespace) }}"
