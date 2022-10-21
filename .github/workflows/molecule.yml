@@ -5,36 +5,9 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
-defaults:
-  run:
-    working-directory: 'democratic_csi'
+
 jobs:
-  molecule-check:
-    runs-on: ubuntu-latest
-    strategy:
-      max-parallel: 4
-      matrix:
-        python-version:
-          - 3.8
-        distro:
-          - centos8
-          - debian10
-          - debian11
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          path: 'democratic_csi'
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
-      - name: Install dependencies
-        run: |
-          python3 -m pip install --upgrade pip
-          python3 -m pip install ansible~=2.10 ansible-lint molecule[docker] docker openshift
-      - name: Test with molecule
-        env:
-          PY_COLORS: '1'
-          ANSIBLE_FORCE_COLOR: '1'
-          MOLECULE_DISTRO: ${{ matrix.distro }}
-        run: molecule test
+  call-workflow-molecule:
+    uses: infra-monkey/reuseable_workflows/.github/workflows/ansible_role_molecule.yml@main
+    with:
+      role-name: 'democratic_csi'
