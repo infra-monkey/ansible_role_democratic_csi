@@ -1,8 +1,0 @@
----
-- hosts: all
-  tasks:
-    - name: Make sure that required modules are installled
-      ansible.builtin.pip:
-        name: "{{ item }}"
-      loop:
-        - openshift

@@ -1,6 +1,6 @@
 ---
 - name: Add democratic-csi chart repo
-  community.kubernetes.helm_repository:
+  kubernetes.core.helm_repository:
     name: democratic-csi
     repo_url: "https://democratic-csi.github.io/charts/"
   when: not democratic_csi.check_config_only
