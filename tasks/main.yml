@@ -11,7 +11,7 @@
     state: directory
     mode: '0700'
 
-- name: "copy values file"
+- name: "Copy values file"
   ansible.builtin.template:
     src: "values-{{ item.driver }}.yml.j2"
     dest: "/tmp/k8s-config/democratic-csi/values-{{ item.driver }}-{{ item.name }}.yml"
