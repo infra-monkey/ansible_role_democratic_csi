@@ -1,8 +1,8 @@
 ---
 - name: Converge
   hosts: all
-  connection: local
-  become: true
+  become: yes
+  gather_facts: yes
   vars:
     democratic_csi_api_host: "truenas.example.com"
     democratic_csi_api_allow_insecure: true
@@ -52,5 +52,6 @@
             -----BEGIN RSA PRIVATE KEY-----
             xxx
             -----END RSA PRIVATE KEY-----
+
   roles:
-    - role: "infra_monkey.democratic_csi"
+    - role: ansible_role_democratic_csi

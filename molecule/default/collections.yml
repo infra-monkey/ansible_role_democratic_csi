@@ -1,2 +1,5 @@
+---
 collections:
-  - kubernetes.core
+  - name: community.docker
+  - name: community.general
+  - name: kubernetes.core
